@@ -2,11 +2,11 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
-Version:	0.6.1
-Release:	6
+Version:	0.7.2
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/%{name}-%{version}-1.tar.gz
+Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
