@@ -11,6 +11,7 @@ Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-GL.patch
 Patch2:		%{name}-assert.patch
+Patch3:		%{name}-ft2build_h.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
@@ -239,9 +240,11 @@ Statyczna biblioteka TTF dla ClanLiba.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
+cp /usr/share/automake/config.sub .
 %{__aclocal}
 %{__autoconf}
 %configure \
