@@ -10,6 +10,7 @@ Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-GL.patch
+Patch2:		%{name}-assert.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
@@ -165,6 +166,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
