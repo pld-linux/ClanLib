@@ -1,7 +1,7 @@
 Summary:	ClanLib, the platform independent game SDK.
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
-Version:	0.1.16
+Version:	0.2.2
 Release:	1
 Copyright:	LGPL
 Group:		Libraries
@@ -61,6 +61,7 @@ do kompilacji programów korzystaj±cych z CleanLib.
 %setup -q
 
 %build
+./autogen.sh
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-static \
