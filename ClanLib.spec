@@ -5,12 +5,14 @@ Version:	0.4.3
 Release:	3
 License:	LGPL
 Group:		Libraries
+Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/RPMS/%{name}-%{version}.tar.gz
+Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-Magick.patch
-URL:		http://clanlib.org
+URL:		http://clanlib.org/
 Requires:	Hermes >= 1.3.1
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	Hermes-devel >= 1.3.1
@@ -41,6 +43,7 @@ przejrzystszy ni¿ DirectX, SDL i inne.
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -60,6 +63,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 Summary:	svgalib target for ClanLib
 Summary(pl):	obs³uga svgalib dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -74,6 +78,7 @@ Obs³uga svgalib dla ClanLib-a.
 Summary:	OpenGL target for ClanLib
 Summary(pl):	obs³uga OpenGL dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -88,6 +93,7 @@ Obs³uga OpenGL dla ClanLib-a.
 Summary:	GGI target for ClanLib
 Summary(pl):	obs³uga GGI dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -102,6 +108,7 @@ Obs³uga OpenGL dla ClanLib-a.
 Summary:	X11 target for ClanLib
 Summary(pl):	obs³uga X11 dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -116,6 +123,7 @@ Obs³uga X11 dla ClanLib-a.
 Summary:	ImageMagick module for ClanLib
 Summary(pl):	Modu³ ImageMagick dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -132,6 +140,7 @@ przez aplikacje ClanLib poprzez biblioteki ImageMagic-a.
 Summary:	MikMod module for ClanLib
 Summary(pl):	Modu³ Mikmod dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -146,6 +155,7 @@ Modu³ Mikmod dla ClanLib-a.
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -165,10 +175,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %build
 ./autogen.sh
-CFLAGS="$RPM_OPT_FLAGS"
-CXXFLAGS="$RPM_OPT_FLAGS" # note: rtti is needed --- ClanLib uses exceptions!
-LDFLAGS="-s"
-export CFLAGS CXXFLAGS LDFLAGS
+# note: rtti is needed --- ClanLib uses exceptions!
 %configure \
 	--enable-static \
 	--enable-shared \
@@ -193,7 +200,7 @@ export CFLAGS CXXFLAGS LDFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} 	install \
+%{__make} install \
 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
 	TARGET_PREFIX="$RPM_BUILD_ROOT%{_libdir}/ClanLib" \
 	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
@@ -203,10 +210,7 @@ rm -rf $RPM_BUILD_ROOT
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 	HTML_PREFIX="`pwd`/html"
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so*
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/ClanLib/lib*.so*
-
-gzip -9nf README CREDITS FAQ $RPM_BUILD_ROOT%{_mandir}/man?/*
+gzip -9nf README CREDITS FAQ
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
