@@ -25,7 +25,7 @@ surfaces.
 
 %description -l pl
 ClanLib SDK jest projektowany jako niezale¿ny od platformy SDK dla gier.
-Stosuje prosty (i zorienrowany obiektowo) interfejs, przejrzystszy ni¿
+Stosuje prosty (i zorientowany obiektowo) interfejs, przejrzystszy ni¿
 DirectX, SDL i inne.
 
 %package devel
