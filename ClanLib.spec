@@ -166,7 +166,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
 aclocal
-autoconf
+%{__autoconf}
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
 	CFLAGS="%{rpmcflags} `pkg-config libpng12 --cflags`"; CXXFLAGS="$CFLAGS"
 fi
