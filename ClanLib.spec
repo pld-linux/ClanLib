@@ -68,7 +68,7 @@ make
 %install
 rm -rf $RPM_BUILD_ROOT
 make 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
-	BIN_PREFIX="$RPM_BUILD_ROOT/usr/bin" \
+	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
 	INC_PREFIX="$RPM_BUILD_ROOT/usr/include" \
 	install
 
@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc *gz
-%attr(755,root,root) /usr/bin/datafile_compiler
+%attr(755,root,root) %{_bindir}/datafile_compiler
 /usr/include/ClanLib
 
 %files static
