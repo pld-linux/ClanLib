@@ -18,7 +18,7 @@ BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	svgalib-devel
-BuildRequires:	Mesa-devel
+BuildRequires:	OpenGL-devel
 BuildRequires:	ImageMagick-devel >= 5.1.1
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel
