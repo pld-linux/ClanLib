@@ -30,6 +30,7 @@ Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 This is the development add-on package that includes the header files needed
@@ -44,6 +45,7 @@ Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
 This is the development add-on package that includes the header files needed
