@@ -6,7 +6,7 @@ diff -uNr ClanLib-0.5.1.orig/configure.in ClanLib-0.5.1/configure.in
      AC_MSG_RESULT([enabled])
    else
 -    comp_mode="-O3 -march=pentium"
-+    comp_mode="-O2"
++    comp_mode="$CFLAGS"
      AC_MSG_RESULT([*********** <-- DISABLED --> ***********])
    fi
  ],
