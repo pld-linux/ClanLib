@@ -163,11 +163,13 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 %prep
 %setup -q
 #%patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
+rm -f missing
 %{__aclocal}
+%{__automake}
 %{__autoconf}
 %configure \
 	--enable-static \
