@@ -8,6 +8,7 @@ Group:		Libraries
 Group(pl):	Biblioteki
 Source:		http://dark.x.dtu.dk/clansoft/clanlib/download/%{name}-%{version}.tar.gz
 Patch0:		%{name}-OPT.patch
+Patch1:		%{name}-Magick.patch
 URL:		http://clanlib.org
 Requires:	Hermes >= 1.3.1
 BuildRequires:	libpng-devel
@@ -17,7 +18,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	svgalib-devel
 BuildRequires:	Mesa-devel
-BuildRequires:	ImageMagick-devel
+BuildRequires:	ImageMagick-devel >= 5.1.1
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel
 BuildRequires:	perl
@@ -153,6 +154,7 @@ do kompilacji programów korzystaj±cych z CleanLib.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./autogen.sh
