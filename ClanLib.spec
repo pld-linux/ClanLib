@@ -2,13 +2,14 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
-Version:	0.7.5
+Version:	0.7.6
 Release:	0.1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-2.tar.bz2
-# Source0-md5:	40f56ddae5e136d126e6066dc4b6ef1a
+Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
+# Source0-md5:	fc42ba7f1e4ac3564692718d09fb13b4
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-voice.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
@@ -248,7 +249,10 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
+
+rm -rf autom4te.cache
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
@@ -309,6 +313,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanNetwork-0.7.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSignals-0.7.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSound-0.7.so.*.*
+%attr(755,root,root) %{_libdir}/libclanVoice-0.7.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
@@ -322,6 +327,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanNetwork.so
 %attr(755,root,root) %{_libdir}/libclanSignals.so
 %attr(755,root,root) %{_libdir}/libclanSound.so
+%attr(755,root,root) %{_libdir}/libclanVoice.so
 %{_libdir}/libclanApp.la
 %{_libdir}/libclanCore.la
 %{_libdir}/libclanDisplay.la
@@ -331,6 +337,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libclanNetwork.la
 %{_libdir}/libclanSignals.la
 %{_libdir}/libclanSound.la
+%{_libdir}/libclanVoice.la
 %dir %{_includedir}/ClanLib-0.7
 %dir %{_includedir}/ClanLib-0.7/ClanLib
 %{_includedir}/ClanLib-0.7/ClanLib/Application
@@ -347,6 +354,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ClanLib-0.7/ClanLib/signals.h
 %{_includedir}/ClanLib-0.7/ClanLib/Sound
 %{_includedir}/ClanLib-0.7/ClanLib/sound.h
+%{_includedir}/ClanLib-0.7/ClanLib/Voice
+%{_includedir}/ClanLib-0.7/ClanLib/voice.h
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/clanApp-0.7.pc
 %{_pkgconfigdir}/clanCore-0.7.pc
@@ -370,6 +379,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libclanNetwork.a
 %{_libdir}/libclanSignals.a
 %{_libdir}/libclanSound.a
+%{_libdir}/libclanVoice.a
 
 %files OpenGL
 %defattr(644,root,root,755)
