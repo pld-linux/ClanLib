@@ -2,7 +2,7 @@ Summary:	ClanLib, the platform independent game SDK.
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
 Version:	0.4.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Group(fr):	Librairies
