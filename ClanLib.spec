@@ -6,8 +6,8 @@ Version:	0.6.5
 Release:	1
 License:	LGPL
 Group:		Libraries
-# Source0-md5:	7115921953ef6fa45102c28622493650
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.gz
+# Source0-md5:  7115921953ef6fa45102c28622493650
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-GL.patch
 Patch2:		%{name}-assert.patch
