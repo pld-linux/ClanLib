@@ -40,7 +40,7 @@ to compile new ClanLib applications.
 
 %description -l pl devel
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
-do kompilacji programów korzystaj±cych z CleanLib.
+do kompilacji programów korzystaj±cych z ClanLib.
 
 %package static
 Summary:	ClanLib development package
