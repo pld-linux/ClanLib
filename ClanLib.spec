@@ -1,9 +1,16 @@
+# TODO:
+# - check what is happening with the documentation - possible cause: just
+#   not ready
+# - clean-up
+# Warning: 0.7.2 is a developement version, but considered as stable as it is:/
+# Maybe switch to 0.6.5 ?
+#
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.7.2
-Release:	1
+Release:	0.1
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
@@ -134,17 +141,17 @@ Vorbis module for ClanLib.
 %description Vorbis -l pl
 Modu³ Vorbis dla ClanLib-a.
 
-%package TTF
-Summary:	TTF module for ClanLib
-Summary(pl):	Modu³ TTF dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
+#%package TTF
+#Summary:	TTF module for ClanLib
+#Summary(pl):	Modu³ TTF dla ClanLib
+#Group:		Development/Libraries
+#Requires:	%{name} = %{version}
 
-%description TTF
-TTF module for ClanLib.
+#%description TTF
+#TTF module for ClanLib.
 
-%description TTF -l pl
-Modu³ TTF dla ClanLib-a.
+#%description TTF -l pl
+#Modu³ TTF dla ClanLib-a.
 
 %package static
 Summary:	ClanLib development package
@@ -226,8 +233,8 @@ rm -rf $RPM_BUILD_ROOT
 %post   MikMod -p /sbin/ldconfig
 %postun MikMod -p /sbin/ldconfig
 
-%post   TTF -p /sbin/ldconfig
-%postun TTF -p /sbin/ldconfig
+#%post   TTF -p /sbin/ldconfig
+#%postun TTF -p /sbin/ldconfig
 
 %post   Vorbis -p /sbin/ldconfig
 %postun Vorbis -p /sbin/ldconfig
@@ -238,10 +245,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
 %attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
 %attr(755,root,root) %{_libdir}/libclanGUI.so.*.*
-%attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
+#%attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanNetwork.so.*.*
 #%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
-%attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
+#%attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
+%attr(755,root,root) %{_libdir}/libclanGUIStyleBoring.so.*.*
+%attr(755,root,root) %{_libdir}/libclanGUIStyleSilver.so.*.*
+%attr(755,root,root) %{_libdir}/libclanSignals.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
 
 %files OpenGL
@@ -256,15 +266,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
 
-%files TTF
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
+#%files TTF
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc README CREDITS html
+#%doc README CREDITS html
+%doc README CREDITS 
 %attr(755,root,root) %{_libdir}/*.so
-%attr(755,root,root) %{_bindir}/*
+#%attr(755,root,root) %{_bindir}/*
 %{_includedir}/ClanLib
 
 %files static
