@@ -14,6 +14,7 @@ Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-Magick.patch
 URL:		http://clanlib.org/
 Requires:	Hermes >= 1.3.1
+Requires:	OpenGL
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	libstdc++-devel
@@ -26,6 +27,8 @@ BuildRequires:	perl
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define 	_noautoreqdep	libGL.so.1 libGLU.so.1
 
 %description
 The ClanLib SDK is designed to provide an platform independent game
