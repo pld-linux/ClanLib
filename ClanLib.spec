@@ -49,9 +49,10 @@ Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
-Requires:	%{name}-OpenGL = %{version}
+#Requires:	%{name}-OpenGL = %{version}
 Requires:	%{name}-MikMod = %{version}
-Requires:	%{name}-Magick = %{version}
+Requires:	%{name}-TTF = %{version}
+Requires:	%{name}-Vorbis = %{version}
 
 %description devel
 This is the development add-on package that includes the header files
@@ -249,8 +250,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
 
-%files OpenGL
-%defattr(644,root,root,755)
+#%files OpenGL
+#%defattr(644,root,root,755)
 #%attr(755,root,root) %{_libdir}/libclanGL.so.*.*
 #%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-glx.so*
 
