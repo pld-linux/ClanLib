@@ -1,8 +1,8 @@
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
-Version:	0.5.0
-Release:	2
+Version:	0.5.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
@@ -12,7 +12,7 @@ Group(pl):	Biblioteki
 Group(pt_BR):	Bibliotecas
 Group(ru):	âÉÂÌÉÏÔÅËÉ
 Group(uk):	â¦ÂÌ¦ÏÔÅËÉ
-Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/%{name}-%{version}-1.tar.gz
+Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 URL:		http://www.clanlib.org/
 Requires:	Hermes >= 1.3.1
