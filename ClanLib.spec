@@ -6,7 +6,8 @@ Version:	0.7.8
 Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
+#Source0Download: http://www.clanlib.org/download.html
+Source0:	http://www.clanlib.org/download/files/%{name}-%{version}-1.tar.bz2
 # Source0-md5:	c034e1cf0485cdc377e1e4e83f99640b
 Patch0:		%{name}-link.patch
 URL:		http://www.clanlib.org/
