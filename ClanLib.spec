@@ -49,7 +49,7 @@ Group(pl):	Programowanie/Biblioteki
 This is the development add-on package that includes the header files needed
 to compile new ClanLib applications.
 
-%description -l pl staic
+%description -l pl static
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
 do kompilacji programów korzystaj±cych z CleanLib.
 
@@ -88,7 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) /usr/bin/datafile_compiler
 /usr/include/ClanLib
 
-%file static
+%files static
 %defattr(644,root,root,755)
 /usr/lib/lib*.a
 
