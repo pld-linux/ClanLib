@@ -61,7 +61,7 @@ do kompilacji programów korzystaj±cych z CleanLib.
 %setup -q -n ClanLib
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure \
+./configure %{_target} \
 	--prefix=/usr
 make
 
