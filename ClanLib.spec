@@ -25,7 +25,7 @@ BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
-BuildRequires:	perl
+BuildRequires:	perl-base
 Requires:	Hermes >= 1.3.1
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
