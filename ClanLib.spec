@@ -8,7 +8,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
-Patch0:		%{name}-config.patch
+Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
 Requires:	Hermes >= 1.3.1
 #OpenGL is disabled in ClanLib 0.5.0 so we disable this requirement
