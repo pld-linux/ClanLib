@@ -29,7 +29,6 @@ BuildRequires:	libvorbis-devel >= 1:1.0
 #BuildRequires:	lua-devel
 BuildRequires:	perl
 Requires:	Hermes >= 1.3.1
-Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -54,14 +53,10 @@ gráficos por exemplo).
 
 %package devel
 Summary:	ClanLib development package
-Summary(pl):	pakiet programistyczny dla ClanLib
+Summary(pl):	Pakiet programistyczny dla ClanLib
 Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	%{name}-OpenGL = %{version}
-Requires:	%{name}-MikMod = %{version}
-Requires:	%{name}-TTF = %{version}
-Requires:	%{name}-Vorbis = %{version}
 Requires:	Hermes-devel
 
 %description devel
@@ -69,98 +64,175 @@ This is the development add-on package that includes the header files
 needed to compile new ClanLib applications.
 
 %description devel -l pl
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
+Programistyczne dodatki do ClanLiba, zawieraj± pliki nag³ówkowe
 potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %description devel -l pt_BR
 Arquivos que possibilitam o desenvolvimento de aplicativos utilizando
 a biblioteca Clanlib.
 
-%package svgalib
-Summary:	svgalib target for ClanLib
-Summary(pl):	obs³uga svgalib dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description svgalib
-This is the svgalib target for ClanLib.
-
-%description svgalib -l pl
-Obs³uga svgalib dla ClanLib-a.
-
-%package OpenGL
-Summary:	OpenGL target for ClanLib
-Summary(pl):	obs³uga OpenGL dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description OpenGL
-This is the OpenGL target for ClanLib.
-
-%description OpenGL -l pl
-Obs³uga OpenGL dla ClanLib-a.
-
-%package GGI
-Summary:	GGI target for ClanLib
-Summary(pl):	obs³uga GGI dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description GGI
-This is the GGI target for ClanLib.
-
-%description GGI -l pl
-Obs³uga GGI dla ClanLib-a.
-
-%package MikMod
-Summary:	MikMod module for ClanLib
-Summary(pl):	Modu³ Mikmod dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description MikMod
-MikMod module for ClanLib.
-
-%description MikMod -l pl
-Modu³ Mikmod dla ClanLib-a.
-
-%package Vorbis
-Summary:	Vorbis module for ClanLib
-Summary(pl):	Modu³ Vorbis dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description Vorbis
-Vorbis module for ClanLib.
-
-%description Vorbis -l pl
-Modu³ Vorbis dla ClanLib-a.
-
-%package TTF
-Summary:	TTF module for ClanLib
-Summary(pl):	Modu³ TTF dla ClanLib
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description TTF
-TTF module for ClanLib.
-
-%description TTF -l pl
-Modu³ TTF dla ClanLib-a.
-
 %package static
-Summary:	ClanLib development package
-Summary(pl):	pakiet programistyczny dla ClanLib
+Summary:	ClanLib static libraries
+Summary(pl):	Biblioteki statyczne ClanLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-This is the development add-on package that includes the header files
-needed to compile new ClanLib applications.
+ClanLib static libraries.
 
 %description static -l pl
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
-potrzebne do kompilacji programów korzystaj±cych z ClanLib.
+Biblioteki statyczne ClanLib.
+
+%package OpenGL
+Summary:	OpenGL ClanLib library
+Summary(pl):	Biblioteka OpenGL dla ClanLiba
+Group:		Libraries
+Requires:	%{name} = %{version}
+Requires:	OpenGL
+
+%description OpenGL
+OpenGL ClanLib library.
+
+%description OpenGL -l pl
+Biblioteka OpenGL dla ClanLiba.
+
+%package OpenGL-devel
+Summary:	Headers files for OpenGL ClanLib library
+Summary(pl):	Pliki nag³ówkowe biblioteki OpenGL dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-OpenGL = %{version}
+Requires:	%{name}-devel = %{version}
+Requires:	OpenGL-devel
+
+%description OpenGL-devel
+Headers files for OpenGL ClanLib library.
+
+%description OpenGL-devel -l pl
+Pliki nag³ówkowe biblioteki OpenGL dla ClanLiba.
+
+%package OpenGL-static
+Summary:	Static OpenGL ClanLib library
+Summary(pl):	Statyczna biblioteka OpenGL dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-OpenGL-devel = %{version}
+
+%description OpenGL-static
+Static OpenGL ClanLib library.
+
+%description OpenGL-static -l pl
+Statyczna biblioteka OpenGL dla ClanLiba.
+
+%package MikMod
+Summary:	MikMod ClanLib library
+Summary(pl):	Biblioteka MikMod dla ClanLiba
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description MikMod
+MikMod ClanLib library.
+
+%description MikMod -l pl
+Biblioteka MikMod dla ClanLiba.
+
+%package MikMod-devel
+Summary:	Headers files for MikMod ClanLib library
+Summary(pl):	Pliki nag³ówkowe biblioteki MikMod dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-MikMod = %{version}
+Requires:	%{name}-devel = %{version}
+Requires:	libmikmod-devel
+
+%description MikMod-devel
+Headers files for MikMod ClanLib library.
+
+%description MikMod-devel -l pl
+Pliki nag³ówkowe biblioteki MikMod dla ClanLiba.
+
+%package MikMod-static
+Summary:	Static MikMod ClanLib library
+Summary(pl):	Statyczna biblioteka MikMod dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-MikMod-devel = %{version}
+
+%description MikMod-static
+Static MikMod ClanLib library.
+
+%description MikMod-static -l pl
+Statyczna biblioteka MikMod dla ClanLiba.
+
+%package Vorbis
+Summary:	Vorbis ClanLib library
+Summary(pl):	Biblioteka Vorbis dla ClanLiba
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description Vorbis
+Vorbis ClanLib library.
+
+%description Vorbis -l pl
+Biblioteka Vorbis dla ClanLiba.
+
+%package Vorbis-devel
+Summary:	Headers files for Vorbis ClanLib library
+Summary(pl):	Pliki nag³ówkowe biblioteki Vorbis dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-Vorbis = %{version}
+Requires:	%{name}-devel = %{version}
+
+%description Vorbis-devel
+Headers files for Vorbis ClanLib library.
+
+%description Vorbis-devel -l pl
+Pliki nag³ówkowe biblioteki Vorbis dla ClanLiba.
+
+%package Vorbis-static
+Summary:	Static Vorbis ClanLib library
+Summary(pl):	Statyczna biblioteka Vorbis dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-Vorbis-devel = %{version}
+
+%description Vorbis-static
+Static Vorbis ClanLib library.
+
+%description Vorbis-static -l pl
+Statyczna biblioteka Vorbis dla ClanLiba.
+
+%package TTF
+Summary:	TTF ClanLib library
+Summary(pl):	Biblioteka TTF dla ClanLiba
+Group:		Libraries
+Requires:	%{name} = %{version}
+
+%description TTF
+TTF ClanLib library.
+
+%description TTF -l pl
+Biblioteka TTF dla ClanLiba.
+
+%package TTF-devel
+Summary:	Headers files for TTF ClanLib library
+Summary(pl):	Pliki nag³ówkowe biblioteki TTF dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-TTF = %{version}
+Requires:	%{name}-devel = %{version}
+
+%description TTF-devel
+Headers files for TTF ClanLib library.
+
+%description TTF-devel -l pl
+Pliki nag³ówkowe biblioteki TTF dla ClanLiba.
+
+%package TTF-static
+Summary:	Static TTF ClanLib library
+Summary(pl):	Statyczna biblioteka TTF dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-TTF-devel = %{version}
+
+%description TTF-static
+Static TTF ClanLib library.
+
+%description TTF-static -l pl
+Statyczna biblioteka TTF dla ClanLiba.
 
 %prep
 %setup -q
@@ -197,11 +269,6 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 	--disable-directfb
 # lua is broken, DirectFB too fresh?
 
-# not functional right now
-# in fact - non existenz in actual configure...
-#	--enable-mpeg
-
-
 %{__make}
 %{__make} docs
 
@@ -237,39 +304,112 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc CREDITS
 %attr(755,root,root) %{_libdir}/libclanApp.so.*.*
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
 %attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
 %attr(755,root,root) %{_libdir}/libclanGUI.so.*.*
 %attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanNetwork.so.*.*
-#%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
+
+%files devel
+%defattr(644,root,root,755)
+%doc README html
+%attr(755,root,root) %{_bindir}/clanlib-config
+%attr(755,root,root) %{_libdir}/libclanApp.so
+%attr(755,root,root) %{_libdir}/libclanCore.so
+%attr(755,root,root) %{_libdir}/libclanDisplay.so
+%attr(755,root,root) %{_libdir}/libclanGUI.so
+%attr(755,root,root) %{_libdir}/libclan*JPEG.so
+%attr(755,root,root) %{_libdir}/libclanNetwork.so
+%attr(755,root,root) %{_libdir}/libclanPNG.so
+%attr(755,root,root) %{_libdir}/libclanSound.so
+%dir %{_includedir}/ClanLib
+%{_includedir}/ClanLib/Application
+%{_includedir}/ClanLib/Core
+%{_includedir}/ClanLib/Display
+%{_includedir}/ClanLib/GUI
+%{_includedir}/ClanLib/*JPEG
+%{_includedir}/ClanLib/Network
+%{_includedir}/ClanLib/PNG
+%{_includedir}/ClanLib/Signals
+%{_includedir}/ClanLib/Sound
+%{_includedir}/ClanLib/application.h
+%{_includedir}/ClanLib/core.h
+%{_includedir}/ClanLib/display.h
+%{_includedir}/ClanLib/efence.h
+%{_includedir}/ClanLib/gui.h
+%{_includedir}/ClanLib/jpeg.h
+%{_includedir}/ClanLib/network.h
+%{_includedir}/ClanLib/png.h
+%{_includedir}/ClanLib/signals.h
+%{_includedir}/ClanLib/sound.h
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libclanApp.a
+%{_libdir}/libclanCore.a
+%{_libdir}/libclanDisplay.a
+%{_libdir}/libclanGUI.a
+%{_libdir}/libclan*JPEG.a
+%{_libdir}/libclanNetwork.a
+%{_libdir}/libclanPNG.a
+%{_libdir}/libclanSound.a
 
 %files OpenGL
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanGL.so.*.*
 
+%files OpenGL-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanGL.so
+%{_includedir}/ClanLib/GL
+%{_includedir}/ClanLib/gl.h
+
+%files OpenGL-static
+%defattr(644,root,root,755)
+%{_libdir}/libclanGL.a
+
 %files MikMod
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanMikMod.so.*.*
+
+%files MikMod-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanMikMod.so
+%{_includedir}/ClanLib/MikMod
+%{_includedir}/ClanLib/mikmod.h
+
+%files MikMod-static
+%defattr(644,root,root,755)
+%{_libdir}/libclanMikMod.a
 
 %files Vorbis
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
 
+%files Vorbis-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanVorbis.so
+%{_includedir}/ClanLib/Vorbis
+%{_includedir}/ClanLib/vorbis.h
+
+%files Vorbis-static
+%defattr(644,root,root,755)
+%{_libdir}/libclanVorbis.a
+
 %files TTF
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
 
-%files devel
+%files TTF-devel
 %defattr(644,root,root,755)
-%doc README CREDITS html
-%attr(755,root,root) %{_libdir}/*.so
-%attr(755,root,root) %{_bindir}/*
-%{_includedir}/ClanLib
+%attr(755,root,root) %{_libdir}/libclanTTF.so
+%{_includedir}/ClanLib/TTF
+%{_includedir}/ClanLib/ttf.h
 
-%files static
+%files TTF-static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libclanTTF.a
