@@ -14,7 +14,7 @@ BuildRequires:	zlib-devel
 BuildRequires:	Hermes-devel >= 1.2.6
 BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The ClanLib SDK is designed to provide an platform independent game SDK using
