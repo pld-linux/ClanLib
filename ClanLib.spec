@@ -67,12 +67,12 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make 	LIB_PREFIX="$RPM_BUILD_ROOT/usr/lib" \
+make 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
 	BIN_PREFIX="$RPM_BUILD_ROOT/usr/bin" \
 	INC_PREFIX="$RPM_BUILD_ROOT/usr/include" \
 	install
 
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so*
+strip $RPM_BUILD_ROOT%{_libdir}/lib*.so*
 
 gzip -9nf README TODO CREDITS
 
@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /usr/lib/lib*.so*
+%attr(755,root,root) %{_libdir}/lib*.so*
 
 %files devel
 %defattr(644,root,root,755)
@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-/usr/lib/lib*.a
+%{_libdir}/lib*.a
 
 %changelog
 * Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
