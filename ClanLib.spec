@@ -291,20 +291,20 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
-%post   OpenGL -p /sbin/ldconfig
-%postun OpenGL -p /sbin/ldconfig
+%post	OpenGL -p /sbin/ldconfig
+%postun	OpenGL -p /sbin/ldconfig
 
-%post   MikMod -p /sbin/ldconfig
-%postun MikMod -p /sbin/ldconfig
+%post	MikMod -p /sbin/ldconfig
+%postun	MikMod -p /sbin/ldconfig
 
-%post   TTF -p /sbin/ldconfig
-%postun TTF -p /sbin/ldconfig
+%post	TTF -p /sbin/ldconfig
+%postun	TTF -p /sbin/ldconfig
 
-%post   Vorbis -p /sbin/ldconfig
-%postun Vorbis -p /sbin/ldconfig
+%post	Vorbis -p /sbin/ldconfig
+%postun	Vorbis -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
