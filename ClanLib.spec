@@ -2,7 +2,7 @@ Summary:	ClanLib, the platform independent game SDK.
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
 Version:	0.4.3
-Release:	2
+Release: 3
 License:	LGPL
 Group:		Libraries
 Group(fr):	Librairies
@@ -12,7 +12,7 @@ Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-Magick.patch
 URL:		http://clanlib.org
 Requires:	Hermes >= 1.3.1
-BuildRequires:	libpng-devel
+BuildRequires:	libpng >= 1.0.8
 BuildRequires:	zlib-devel
 BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	libstdc++-devel
@@ -21,7 +21,7 @@ BuildRequires:	svgalib-devel
 BuildRequires:	OpenGL-devel
 BuildRequires:	ImageMagick-devel >= 5.1.1
 BuildRequires:	libmikmod-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libpng >= 1.0.8
 BuildRequires:	perl
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
