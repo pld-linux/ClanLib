@@ -106,7 +106,7 @@ Requires:	%{name} = %{version}
 This is the GGI target for ClanLib.
 
 %description GGI -l pl
-Obs³uga OpenGL dla ClanLib-a.
+Obs³uga GGI dla ClanLib-a.
 
 %package MikMod
 Summary:	MikMod module for ClanLib
