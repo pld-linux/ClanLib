@@ -58,7 +58,7 @@ Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
 do kompilacji programów korzystaj±cych z CleanLib.
 
 %prep
-%setup -q -n ClanLib
+%setup -q
 %build
 %configure
 make
