@@ -1,0 +1,18 @@
+diff -durN ClanLib-0.4.3.orig/configure.in ClanLib-0.4.3/configure.in
+--- ClanLib-0.4.3.orig/configure.in	Mon Mar 13 18:55:21 2000
++++ ClanLib-0.4.3/configure.in	Sun Apr 16 18:14:18 2000
+@@ -227,12 +227,12 @@
+     comp_mode="-DDEBUG=1 -g"
+     AC_MSG_RESULT([enabled])
+   else
+-    comp_mode="-O3"
++    comp_mode=""
+     AC_MSG_RESULT([*********** <-- DISABLED --> ***********])
+   fi
+ ],
+ [
+-  comp_mode="-O3"
++  comp_mode=""
+   AC_MSG_RESULT([********** DISABLED FOR STABLE RELEASE VERSION **********])
+ ])
+ 
