@@ -5,6 +5,7 @@ Version:	0.4.3
 Release:	1
 License:	LGPL
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/RPMS/%{name}-%{version}.tar.gz
 Patch0:		%{name}-OPT.patch
@@ -27,21 +28,22 @@ BuildRequires:	libgii-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The ClanLib SDK is designed to provide an platform independent game SDK using
-a lot cleaner (and object oriented) interface than the traditional way it is
-done in DirectX, SDL and such. The goals is to avoid game developers
-constantly reinventing the wheel by providing smarter ways to eg. load
-surfaces.
+The ClanLib SDK is designed to provide an platform independent game
+SDK using a lot cleaner (and object oriented) interface than the
+traditional way it is done in DirectX, SDL and such. The goals is to
+avoid game developers constantly reinventing the wheel by providing
+smarter ways to eg. load surfaces.
 
 %description -l pl
-ClanLib SDK jest projektowany jako niezale¿ny od platformy SDK dla gier.
-Stosuje prosty (i zorientowany obiektowo) interfejs, przejrzystszy ni¿
-DirectX, SDL i inne.
+ClanLib SDK jest projektowany jako niezale¿ny od platformy SDK dla
+gier. Stosuje prosty (i zorientowany obiektowo) interfejs,
+przejrzystszy ni¿ DirectX, SDL i inne.
 
 %package devel
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	%{name}-OpenGL = %{version}
@@ -49,22 +51,23 @@ Requires:	%{name}-MikMod = %{version}
 Requires:	%{name}-Magick = %{version}
 
 %description devel
-This is the development add-on package that includes the header files needed
-to compile new ClanLib applications.
+This is the development add-on package that includes the header files
+needed to compile new ClanLib applications.
 
 %description -l pl devel
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
-do kompilacji programów korzystaj±cych z ClanLib.
+Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
+potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %package svgalib
 Summary:	svgalib target for ClanLib
 Summary(pl):	obs³uga svgalib dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description svgalib
-This is the svgalib target for ClanLib. 
+This is the svgalib target for ClanLib.
 
 %description -l pl svgalib
 Obs³uga svgalib dla ClanLib-a.
@@ -73,11 +76,12 @@ Obs³uga svgalib dla ClanLib-a.
 Summary:	OpenGL target for ClanLib
 Summary(pl):	obs³uga OpenGL dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description OpenGL
-This is the OpenGL target for ClanLib. 
+This is the OpenGL target for ClanLib.
 
 %description -l pl OpenGL
 Obs³uga OpenGL dla ClanLib-a.
@@ -86,11 +90,12 @@ Obs³uga OpenGL dla ClanLib-a.
 Summary:	GGI target for ClanLib
 Summary(pl):	obs³uga GGI dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description GGI
-This is the GGI target for ClanLib. 
+This is the GGI target for ClanLib.
 
 %description -l pl GGI
 
@@ -99,11 +104,12 @@ Obs³uga OpenGL dla ClanLib-a.
 Summary:	X11 target for ClanLib
 Summary(pl):	obs³uga X11 dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description X11
-This is the X11 target for ClanLib. 
+This is the X11 target for ClanLib.
 
 %description -l pl X11
 Obs³uga X11 dla ClanLib-a.
@@ -112,21 +118,23 @@ Obs³uga X11 dla ClanLib-a.
 Summary:	ImageMagick module for ClanLib
 Summary(pl):	Modu³ ImageMagick dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description Magick
-This is the ImageMagic add-on package for ClanLib. It provides support to most
-known graphics file-formats.
+This is the ImageMagic add-on package for ClanLib. It provides support
+to most known graphics file-formats.
 
 %description -l pl Magick
-Pozwala na obs³ugê praktycznie dowolnych formatów plików graficznych przez
-aplikacje ClanLib poprzez biblioteki ImageMagic-a.
+Pozwala na obs³ugê praktycznie dowolnych formatów plików graficznych
+przez aplikacje ClanLib poprzez biblioteki ImageMagic-a.
 
 %package MikMod
 Summary:	MikMod module for ClanLib
 Summary(pl):	Modu³ Mikmod dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -140,16 +148,17 @@ Modu³ Mikmod dla ClanLib
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
-This is the development add-on package that includes the header files needed
-to compile new ClanLib applications.
+This is the development add-on package that includes the header files
+needed to compile new ClanLib applications.
 
 %description -l pl static
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
-do kompilacji programów korzystaj±cych z CleanLib.
+Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
+potrzebne do kompilacji programów korzystaj±cych z CleanLib.
 
 %prep
 %setup -q
