@@ -202,7 +202,7 @@ rm -f missing
 
 
 %{__make}
-%{__make} docs
+#%{__make} docs
 
 %install
 rm -rf $RPM_BUILD_ROOT
