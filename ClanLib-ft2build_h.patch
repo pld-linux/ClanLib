@@ -1,0 +1,11 @@
+diff -durN -x '*~' ClanLib-0.6.5.orig/Sources/TTF/font_ttf.cpp ClanLib-0.6.5/Sources/TTF/font_ttf.cpp
+--- ClanLib-0.6.5.orig/Sources/TTF/font_ttf.cpp	2002-01-15 16:18:48.000000000 +0000
++++ ClanLib-0.6.5/Sources/TTF/font_ttf.cpp	2004-12-29 12:15:07.112200536 +0000
+@@ -21,6 +21,7 @@
+ #include <malloc.h>
+ #include "Display/Font/font_generic.h"
+ 
++#include <ft2build.h>
+ #include <freetype/freetype.h>
+ 
+ #include "font_ttf.h"
