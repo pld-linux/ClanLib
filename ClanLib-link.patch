@@ -1,0 +1,127 @@
+--- ClanLib-0.7.4/Sources/Application/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Application/Makefile.am	2003-10-09 23:15:08.843198880 +0200
+@@ -6,6 +6,7 @@
+ libclanApp_la_SOURCES = Unix/clanapp.cpp
+ endif
+ 
++libclanApp_la_LIBADD = ../Core/libclanCore.la
+ libclanApp_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/Display/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Display/Makefile.am	2003-10-09 23:16:41.208157272 +0200
+@@ -1,7 +1,7 @@
+ lib_LTLIBRARIES = libclanDisplay.la
+ 
+ # FIXME: This needs to be @LIBS@ or @X11LIBS@ or something like that
+-libclanDisplay_la_LIBADD = -lHermes -L/usr/X11R6/lib/ -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
++libclanDisplay_la_LIBADD = -lHermes -L/usr/X11R6/lib -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
+ 
+ libclanDisplay_la_SOURCES = \
+ display_target.cpp \
+--- ClanLib-0.7.4/Sources/GL/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/GL/Makefile.am	2003-10-09 23:17:58.726372712 +0200
+@@ -26,7 +26,7 @@
+ GLX/display_window_opengl.cpp
+ endif
+ 
+-libclanGL_la_LIBADD = -lGL -lGLU -lXxf86vm
++libclanGL_la_LIBADD = -lGL -lGLU -lXxf86vm ../Display/libclanDisplay.la
+ 
+ EXTRA_DIST = \
+  WGL/displaycard_opengl_win32.cpp \
+--- ClanLib-0.7.4/Sources/GUI/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/GUI/Makefile.am	2003-10-09 23:19:13.152058288 +0200
+@@ -82,6 +82,8 @@
+ filedialog.cpp \
+ window_generic.h
+ 
++libclanGUI_la_LIBADD = ../Display/libclanDisplay.la
++
+ libclanGUI_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/GUIStyleBoring/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/GUIStyleBoring/Makefile.am	2003-10-09 23:20:12.015109744 +0200
+@@ -12,6 +12,7 @@
+ image_boring.h     progressbar_boring.h  window_boring.h \
+ inputbox_boring.h  radiobutton_boring.h
+ 
++libclanGUIStyleBoring_la_LIBADD = ../GUI/libclanGUI.la
+ libclanGUIStyleBoring_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/GUIStyleSilver/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/GUIStyleSilver/Makefile.am	2003-10-09 23:21:06.631806744 +0200
+@@ -10,6 +10,7 @@
+ image_silver.h     progressbar_silver.h  window_silver.h \
+ inputbox_silver.h  radiobutton_silver.h
+ 
++libclanGUIStyleSilver_la_LIBADD = ../GUI/libclanGUI.la
+ libclanGUIStyleSilver_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/MikMod/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/MikMod/Makefile.am	2003-10-09 23:24:59.453412480 +0200
+@@ -8,7 +8,7 @@
+  soundprovider_mikmod.cpp   \
+  soundprovider_mikmod_session.cpp
+ 
+-libclanMikMod_la_LIBADD = -lmikmod
++libclanMikMod_la_LIBADD = -lmikmod ../Sound/libclanSound.la
+ 
+ libclanMikMod_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+--- ClanLib-0.7.4/Sources/Network/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Network/Makefile.am	2003-10-09 23:25:43.592702288 +0200
+@@ -69,6 +69,7 @@
+ libclanNetwork_la_SOURCES += setupnetwork_unix.cpp
+ endif
+ 
++libclanNetwork_la_LIBADD = ../Core/libclanCore.la
+ libclanNetwork_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/SDL/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/SDL/Makefile.am	2003-10-09 23:26:23.644613472 +0200
+@@ -20,7 +20,7 @@
+ surface_sdl.h
+ 
+ libclanSDL_la_CXXFLAGS = $(SDL_CFLAGS)
+-libclanSDL_la_LIBADD   = $(SDL_LIBS)
++libclanSDL_la_LIBADD   = $(SDL_LIBS) ../Display/libclanDisplay.la
+ 
+ libclanSDL_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+--- ClanLib-0.7.4/Sources/Sound/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Sound/Makefile.am	2003-10-09 23:27:44.491322904 +0200
+@@ -36,6 +36,7 @@
+ Unix/soundoutput_oss.h
+ endif
+ 
++libclanSound_la_LIBADD = ../Core/libclanCore.la
+ libclanSound_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
+--- ClanLib-0.7.4/Sources/Voice/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Voice/Makefile.am	2003-10-09 23:30:11.832923576 +0200
+@@ -2,7 +2,7 @@
+ 
+ libclanVoice_la_SOURCES = voice_decoder.cpp  voice_encoder.cpp
+ 
+-libclanVoice_la_LIBADD =
++libclanVoice_la_LIBADD = ../Sound/libclanSound.la
+ 
+ libclanVoice_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
+--- ClanLib-0.7.4/Sources/Vorbis/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.4/Sources/Vorbis/Makefile.am	2003-10-09 23:28:39.064026592 +0200
+@@ -5,7 +5,7 @@
+ 	soundprovider_vorbis.cpp \
+ 	soundprovider_vorbis_session.cpp
+ 
+-libclanVorbis_la_LIBADD = -logg -lvorbis
++libclanVorbis_la_LIBADD = -logg -lvorbis ../Sound/libclanSound.la
+ 
+ libclanVorbis_la_LDFLAGS = \
+   -release $(LT_RELEASE) \
