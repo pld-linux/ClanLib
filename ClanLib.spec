@@ -2,12 +2,12 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
-Version:	0.7.4
+Version:	0.7.5
 Release:	0.1
 License:	LGPL v2
 Group:		Libraries
-Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
-# Source0-md5:	cf7aabf73590b4fedfa53907029de588
+Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-2.tar.bz2
+# Source0-md5:	40f56ddae5e136d126e6066dc4b6ef1a
 Patch0:		%{name}-link.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
@@ -24,8 +24,6 @@ BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
-# If broken - don't require it....
-#BuildRequires:	lua-devel
 BuildRequires:	perl
 Requires:	Hermes >= 1.3.1
 Requires:	OpenGL
