@@ -1,8 +1,9 @@
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
+Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
@@ -45,9 +46,16 @@ ClanLib SDK jest projektowany jako niezale¿ny od platformy SDK dla
 gier. Stosuje prosty (i zorientowany obiektowo) interfejs,
 przejrzystszy ni¿ DirectX, SDL i inne.
 
+%description -l pt_BR
+A Clanlib é uma biblioteca de jogos multi-plataforma desenhada para
+facilitar o trabalho dos desenvolvedores. A idéia principal é fornecer
+uma interface comum para os problemas clássicos dos jogos (carregar
+gráficos por exemplo).
+
 %package devel
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
+Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(es):	Desarrollo/Bibliotecas
@@ -70,6 +78,10 @@ needed to compile new ClanLib applications.
 %description -l pl devel
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
 potrzebne do kompilacji programów korzystaj±cych z ClanLib.
+
+%description -l pt_BR devel
+Arquivos que possibilitam o desenvolvimento de aplicativos utilizando
+a biblioteca Clanlib.
 
 %package svgalib
 Summary:	svgalib target for ClanLib
