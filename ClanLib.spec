@@ -7,9 +7,8 @@ Release:	0.1
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
-# Source0-md5:	cbaa39f7de761e2cba52ddd97795150e
+# Source0-md5:	cf7aabf73590b4fedfa53907029de588
 Patch0:		%{name}-link.patch
-#Patch0:		%{name}-OPT.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
