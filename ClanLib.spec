@@ -65,7 +65,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	%{name}-OpenGL = %{version}
 Requires:	%{name}-MikMod = %{version}
-Requires:	%{name}-TTF = %{version}
+#Requires:	%{name}-TTF = %{version}
 Requires:	%{name}-Vorbis = %{version}
 Requires:	Hermes-devel
 
