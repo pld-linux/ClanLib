@@ -184,7 +184,7 @@ export CFLAGS CXXFLAGS LDFLAGS
 	--enable-clansound \
 	--enable-network \
 	--enable-dyn
-make
+%{__make}
 %{__make} clanGL
 %{__make} clanMikMod
 %{__make} clanMagick
