@@ -10,6 +10,8 @@ Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{vers
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
+# doesn't build with 0.9.12
+#BuildRequires:	DirectFB-devel = 0.9.9
 BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
@@ -167,9 +169,6 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 # note: rtti is needed --- ClanLib uses exceptions!
 %{__aclocal}
 %{__autoconf}
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-	CFLAGS="%{rpmcflags} `pkg-config libpng12 --cflags`"; CXXFLAGS="$CFLAGS"
-fi
 %configure \
 	--enable-static \
 	--enable-shared \
@@ -191,7 +190,9 @@ fi
 	--enable-vidmode \
 	--enable-vorbis \
 	--enable-x11 \
-	--disable-lua	# broken
+	--disable-lua \
+	--disable-directfb
+# lua is broken, DirectFB too fresh?
 
 # not functional right now
 # in fact - non existenz in actual configure...
