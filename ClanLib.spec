@@ -61,11 +61,11 @@ Requires:	Hermes-devel
 This is the development add-on package that includes the header files
 needed to compile new ClanLib applications.
 
-%description -l pl devel
+%description devel -l pl
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
 potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Arquivos que possibilitam o desenvolvimento de aplicativos utilizando
 a biblioteca Clanlib.
 
@@ -78,7 +78,7 @@ Requires:	%{name} = %{version}
 %description svgalib
 This is the svgalib target for ClanLib.
 
-%description -l pl svgalib
+%description svgalib -l pl
 Obs³uga svgalib dla ClanLib-a.
 
 %package OpenGL
@@ -90,7 +90,7 @@ Requires:	%{name} = %{version}
 %description OpenGL
 This is the OpenGL target for ClanLib.
 
-%description -l pl OpenGL
+%description OpenGL -l pl
 Obs³uga OpenGL dla ClanLib-a.
 
 %package GGI
@@ -102,7 +102,7 @@ Requires:	%{name} = %{version}
 %description GGI
 This is the GGI target for ClanLib.
 
-%description -l pl GGI
+%description GGI -l pl
 Obs³uga OpenGL dla ClanLib-a.
 
 %package MikMod
@@ -114,7 +114,7 @@ Requires:	%{name} = %{version}
 %description MikMod
 MikMod module for ClanLib.
 
-%description -l pl MikMod
+%description MikMod -l pl
 Modu³ Mikmod dla ClanLib-a.
 
 %package Vorbis
@@ -126,7 +126,7 @@ Requires:	%{name} = %{version}
 %description Vorbis
 Vorbis module for ClanLib.
 
-%description -l pl Vorbis
+%description Vorbis -l pl
 Modu³ Vorbis dla ClanLib-a.
 
 %package TTF
@@ -138,7 +138,7 @@ Requires:	%{name} = %{version}
 %description TTF
 TTF module for ClanLib.
 
-%description -l pl TTF
+%description TTF -l pl
 Modu³ TTF dla ClanLib-a.
 
 %package static
@@ -151,7 +151,7 @@ Requires:	%{name}-devel = %{version}
 This is the development add-on package that includes the header files
 needed to compile new ClanLib applications.
 
-%description -l pl static
+%description static -l pl
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
 potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
@@ -186,10 +186,10 @@ autoconf
 	--enable-ttf \
 	--disable-lua	# broken
 
-# not functional right now	
+# not functional right now
 #	--enable-opengl \
 #	--enable-mpeg
-	
+
 
 %{__make}
 %{__make} docs
