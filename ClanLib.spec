@@ -61,6 +61,7 @@ Requires:	%{name} = %{version}
 Requires:	%{name}-MikMod = %{version}
 Requires:	%{name}-TTF = %{version}
 Requires:	%{name}-Vorbis = %{version}
+Requires:	Hermes-devel
 
 %description devel
 This is the development add-on package that includes the header files
