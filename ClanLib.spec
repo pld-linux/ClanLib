@@ -69,7 +69,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 make 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
 	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
-	INC_PREFIX="$RPM_BUILD_ROOT/usr/include" \
+	INC_PREFIX="$RPM_BUILD_ROOT%{_includedir}" \
 	install
 
 strip $RPM_BUILD_ROOT%{_libdir}/lib*.so*
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *gz
 %attr(755,root,root) %{_bindir}/datafile_compiler
-/usr/include/ClanLib
+%{_includedir}/ClanLib
 
 %files static
 %defattr(644,root,root,755)
