@@ -1,0 +1,12 @@
+diff -uNr ClanLib-0.5.1.orig/configure.in ClanLib-0.5.1/configure.in
+--- ClanLib-0.5.1.orig/configure.in	Wed Oct 31 21:43:54 2001
++++ ClanLib-0.5.1/configure.in	Mon Mar 25 22:25:57 2002
+@@ -565,7 +565,7 @@
+     comp_mode="-DDEBUG=1 -g3 -ggdb3 -O0"
+     AC_MSG_RESULT([enabled])
+   else
+-    comp_mode="-O3 -march=pentium"
++    comp_mode="-O2"
+     AC_MSG_RESULT([*********** <-- DISABLED --> ***********])
+   fi
+ ],
