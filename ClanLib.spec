@@ -2,8 +2,8 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
-Version:	0.5.1
-Release:	4
+Version:	0.6.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
@@ -21,6 +21,7 @@ BuildRequires:	freetype-devel >= 2.0
 #BuildRequires:	OpenGL-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libjpeg-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	lua-devel
@@ -231,14 +232,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanApp.so.*.*
+%ghost %{_libdir}/libclanApp.so.2
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
+%ghost %{_libdir}/libclanCore.so.2
 %attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
+%ghost %{_libdir}/libclanDisplay.so.2
 %attr(755,root,root) %{_libdir}/libclanGUI.so.*.*
+%ghost %{_libdir}/libclanGUI.so.2
 %attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
+%ghost %{_libdir}/libclanJPEG.so.2
+%ghost %{_libdir}/libclanSmallJPEG.so.2
 %attr(755,root,root) %{_libdir}/libclanNetwork.so.*.*
+%ghost %{_libdir}/libclanNetwork.so.2
 #%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
+%ghost %{_libdir}/libclanPNG.so.2
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
+%ghost %{_libdir}/libclanSound.so.2
 
 #%files OpenGL
 #%defattr(644,root,root,755)
@@ -248,14 +258,17 @@ rm -rf $RPM_BUILD_ROOT
 %files MikMod
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanMikMod.so.*.*
+%ghost %{_libdir}/libclanMikMod.so.2
 
 %files Vorbis
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
+%ghost %{_libdir}/libclanVorbis.so.2
 
 %files TTF
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
+%ghost %{_libdir}/libclanTTF.so.2
 
 %files devel
 %defattr(644,root,root,755)
@@ -267,4 +280,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-#%{_libdir}/lib*.a
+%{_libdir}/lib*.a
