@@ -8,6 +8,9 @@ Group:		Libraries
 Group(pl):	Biblioteki
 Source:		http://dark.x.dtu.dk/clansoft/clanlib/download/%{name}-%{version}.tgz
 URL:		http://clanlib.org
+BuildPrereq:	libpng-devel
+BuildPrereq:	libz-devel
+BuildPrereq:	Hermes-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -23,7 +26,7 @@ Stosuje prosty (i zorienrowany obiektowo) interfejs, przejrzystszy ni¿
 DirectX, SDL i inne.
 
 %package devel
-Summary:	ClanLib development paskage
+Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
@@ -36,42 +39,66 @@ to compile new ClanLib applications.
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
 do kompilacji programów korzystaj±cych z CleanLib.
 
+%package static
+Summary:	ClanLib development package
+Summary(pl):	pakiet programistyczny dla ClanLib
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+
+%description static
+This is the development add-on package that includes the header files needed
+to compile new ClanLib applications.
+
+%description -l pl staic
+Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe potrzebne
+do kompilacji programów korzystaj±cych z CleanLib.
+
 %prep
-%setup -n ClanLib
+%setup -q -n ClanLib
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure -prefix=/usr
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
+	--prefix=/usr
 make
-for i in *.so *.a
-do
-  strip $i
-done
 
 %install
+rm -rf $RPM_BUILD_ROOT
 make 	LIB_PREFIX="$RPM_BUILD_ROOT/usr/lib" \
 	BIN_PREFIX="$RPM_BUILD_ROOT/usr/bin" \
 	INC_PREFIX="$RPM_BUILD_ROOT/usr/include" \
 	install
 
+strip $RPM_BUILD_ROOT/usr/lib/lib*.so*
+
+gzip -9nf README TODO CREDITS
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-/sbin/ldconfig
-
-%postun
-/sbin/ldconfig
-
 %files
 %defattr(644,root,root,755)
-%doc README TODO CREDITS
-%attr(755,root,root) /usr/lib/*
+%attr(755,root,root) /usr/lib/lib*.so*
 
 %files devel
 %defattr(644,root,root,755)
+%doc *gz
 %attr(755,root,root) /usr/bin/datafile_compiler
 /usr/include/ClanLib
 
+%file static
+%defattr(644,root,root,755)
+/usr/lib/lib*.a
+
 %changelog
+* Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.1.14-2]
+- added BuildPrereq (libpng-devel, libz-devel, Hermes-devel).
+- added -q %setup patameter,
+- added static subpackage.
 
 * Mon Apr 19 1999 Konrad Stepieñ <kornad@interdata.com.pl>
+  [0.1.14-1]
 - initial version
