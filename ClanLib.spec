@@ -2,7 +2,7 @@ Summary:	ClanLib, the platform independent game SDK.
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
 Version:	0.1.14
-Release:	2
+Release:	3
 Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
@@ -60,19 +60,17 @@ do kompilacji programów korzystaj±cych z CleanLib.
 %prep
 %setup -q -n ClanLib
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target_platform} \
-	--prefix=%{_prefix}
+%configure
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make 	install
+make 	install \
 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
 	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
 	INC_PREFIX="$RPM_BUILD_ROOT%{_includedir}"
 
-strip $RPM_BUILD_ROOT%{_libdir}/lib*.so*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so*
 
 gzip -9nf README TODO CREDITS
 
@@ -97,6 +95,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.a
 
 %changelog
+* Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
+  [0.1.14-3]
+- fixed install
+
 * Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [0.1.14-2]
 - added BuildPrereq (libpng-devel, libz-devel, Hermes-devel).
