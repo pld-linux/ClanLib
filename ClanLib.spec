@@ -6,7 +6,7 @@ Version:	0.6.1
 Release:	6
 License:	LGPL
 Group:		Libraries
-Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
+Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
@@ -18,9 +18,9 @@ BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	libjpeg-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libvorbis-devel >= 1:1.0
 # If broken - don't require it....
@@ -214,6 +214,9 @@ rm -rf $RPM_BUILD_ROOT
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 	HTML_PREFIX="`pwd`/html"
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -228,9 +231,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %post   Vorbis -p /sbin/ldconfig
 %postun Vorbis -p /sbin/ldconfig
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
