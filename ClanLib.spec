@@ -6,13 +6,6 @@ Version:	0.5.1
 Release:	3
 License:	LGPL
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 URL:		http://www.clanlib.org/
@@ -57,13 +50,6 @@ Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 #Requires:	%{name}-OpenGL = %{version}
 Requires:	%{name}-MikMod = %{version}
@@ -87,13 +73,6 @@ a biblioteca Clanlib.
 Summary:	svgalib target for ClanLib
 Summary(pl):	obsЁuga svgalib dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description svgalib
@@ -106,13 +85,6 @@ ObsЁuga svgalib dla ClanLib-a.
 Summary:	OpenGL target for ClanLib
 Summary(pl):	obsЁuga OpenGL dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description OpenGL
@@ -125,13 +97,6 @@ ObsЁuga OpenGL dla ClanLib-a.
 Summary:	GGI target for ClanLib
 Summary(pl):	obsЁuga GGI dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description GGI
@@ -144,13 +109,6 @@ ObsЁuga OpenGL dla ClanLib-a.
 Summary:	MikMod module for ClanLib
 Summary(pl):	ModuЁ Mikmod dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description MikMod
@@ -163,13 +121,6 @@ ModuЁ Mikmod dla ClanLib-a.
 Summary:	Vorbis module for ClanLib
 Summary(pl):	ModuЁ Vorbis dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description Vorbis
@@ -182,13 +133,6 @@ ModuЁ Vorbis dla ClanLib-a.
 Summary:	TTF module for ClanLib
 Summary(pl):	ModuЁ TTF dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description TTF
@@ -201,13 +145,6 @@ ModuЁ TTF dla ClanLib-a.
 Summary:	ClanLib development package
 Summary(pl):	pakiet programistyczny dla ClanLib
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
