@@ -3,29 +3,29 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.6.1
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Libraries
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
-Requires:	Hermes >= 1.3.1
-#OpenGL is disabled in ClanLib 0.5.0 so we disable this requirement
-#Requires:	OpenGL
 BuildRequires:	Hermes-devel >= 1.3.1
+BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype-devel >= 2.0
-#BuildRequires:	OpenGL-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libvorbis-devel
-BuildRequires:	lua-devel
+# If broken - don't require it....
+#BuildRequires:	lua-devel
 BuildRequires:	perl
+Requires:	Hermes >= 1.3.1
+Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -54,7 +54,7 @@ Summary(pl):	pakiet programistyczny dla ClanLib
 Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-#Requires:	%{name}-OpenGL = %{version}
+Requires:	%{name}-OpenGL = %{version}
 Requires:	%{name}-MikMod = %{version}
 Requires:	%{name}-TTF = %{version}
 Requires:	%{name}-Vorbis = %{version}
@@ -174,26 +174,27 @@ fi
 	--enable-static \
 	--enable-shared \
 	--%{?debug:en}%{!?debug:dis}able-debug \
-	--enable-x11 \
-	--enable-fbdev \
-	--enable-vidmode \
-	--enable-clansound \
-	--enable-network \
 %ifarch %{ix86}
 	--enable-asm386 \
 %endif
+	--enable-clansound \
 	--enable-dyn \
+	--enable-fbdev \
 	--enable-gui \
-	--enable-vorbis \
-	--enable-mikmod \
-	--enable-png \
 	--enable-jpeg \
+	--enable-mikmod \
+	--enable-network \
+	--enable-opengl \
+	--enable-png \
 	--enable-smalljpeg \
 	--enable-ttf \
+	--enable-vidmode \
+	--enable-vorbis \
+	--enable-x11 \
 	--disable-lua	# broken
 
 # not functional right now
-#	--enable-opengl \
+# in fact - non existenz in actual configure...
 #	--enable-mpeg
 
 
@@ -242,10 +243,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
 
-#%files OpenGL
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/libclanGL.so.*.*
-#%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-glx.so*
+%files OpenGL
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanGL.so.*.*
 
 %files MikMod
 %defattr(644,root,root,755)
