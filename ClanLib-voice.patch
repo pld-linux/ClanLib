@@ -1,0 +1,10 @@
+--- ClanLib-0.7.6/configure.ac.orig	2003-11-11 17:30:45.000000000 +0100
++++ ClanLib-0.7.6/configure.ac	2003-11-14 07:45:37.384099160 +0100
+@@ -433,6 +433,7 @@
+ 
+ if test "$enable_clanVoice" = "yes"; then
+         ClanLib_Modules="$ClanLib_Modules Voice"
++	ClanLib_API_Modules="$ClanLib_API_Modules \$(clanVoice_includes)"
+ fi
+ 
+ if test "$enable_clanGL" = "yes"; then
