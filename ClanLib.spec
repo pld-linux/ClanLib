@@ -11,11 +11,10 @@ Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.7.2
 Release:	0.1
-License:	LGPL
+License:	LGPL v2
 Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
 Patch0:		%{name}-OPT.patch
-#Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
