@@ -210,9 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT	
 
-%{__make} docs_install \
-	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
-	HTML_PREFIX="`pwd`/html"
+#%{__make} docs_install \
+#	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
+#	HTML_PREFIX="`pwd`/html"
 
 %clean
 rm -rf $RPM_BUILD_ROOT
