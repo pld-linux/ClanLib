@@ -232,23 +232,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanApp.so.*.*
-%ghost %{_libdir}/libclanApp.so.2
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
-%ghost %{_libdir}/libclanCore.so.2
 %attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
-%ghost %{_libdir}/libclanDisplay.so.2
 %attr(755,root,root) %{_libdir}/libclanGUI.so.*.*
-%ghost %{_libdir}/libclanGUI.so.2
 %attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
-%ghost %{_libdir}/libclanJPEG.so.2
-%ghost %{_libdir}/libclanSmallJPEG.so.2
 %attr(755,root,root) %{_libdir}/libclanNetwork.so.*.*
-%ghost %{_libdir}/libclanNetwork.so.2
 #%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
-%ghost %{_libdir}/libclanPNG.so.2
 %attr(755,root,root) %{_libdir}/libclanSound.so.*.*
-%ghost %{_libdir}/libclanSound.so.2
 
 #%files OpenGL
 #%defattr(644,root,root,755)
@@ -258,17 +249,14 @@ rm -rf $RPM_BUILD_ROOT
 %files MikMod
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanMikMod.so.*.*
-%ghost %{_libdir}/libclanMikMod.so.2
 
 %files Vorbis
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
-%ghost %{_libdir}/libclanVorbis.so.2
 
 %files TTF
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
-%ghost %{_libdir}/libclanTTF.so.2
 
 %files devel
 %defattr(644,root,root,755)
