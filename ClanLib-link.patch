@@ -8,28 +8,28 @@
  libclanApp_la_LDFLAGS = \
    -release $(LT_RELEASE) \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
---- ClanLib-0.7.4/Sources/Display/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
-+++ ClanLib-0.7.4/Sources/Display/Makefile.am	2003-10-09 23:16:41.208157272 +0200
-@@ -1,7 +1,7 @@
- lib_LTLIBRARIES = libclanDisplay.la
- 
+--- ClanLib-0.7.7/Sources/Display/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.7/Sources/Display/Makefile.am	2003-10-09 23:16:41.208157272 +0200
+@@ -3,7 +3,7 @@
  # FIXME: This needs to be @LIBS@ or @X11LIBS@ or something like that
+ if WIN32
+ else
 -libclanDisplay_la_LIBADD = -lHermes -L/usr/X11R6/lib/ -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
 +libclanDisplay_la_LIBADD = -lHermes -L/usr/X11R6/lib -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
- 
- libclanDisplay_la_SOURCES = \
- display_target.cpp \
---- ClanLib-0.7.4/Sources/GL/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
-+++ ClanLib-0.7.4/Sources/GL/Makefile.am	2003-10-09 23:17:58.726372712 +0200
-@@ -26,7 +26,7 @@
- GLX/display_window_opengl.cpp
  endif
  
+ libclanDisplay_la_SOURCES = \
+--- ClanLib-0.7.7/Sources/GL/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
++++ ClanLib-0.7.7/Sources/GL/Makefile.am	2003-10-09 23:17:58.726372712 +0200
+@@ -37,7 +37,7 @@
+ GLX/input_device_linuxjoystick.h \
+ GLX/input_device_linuxusbmouse.cpp \
+ GLX/input_device_linuxusbmouse.h
 -libclanGL_la_LIBADD = -lGL -lGLU -lXxf86vm
 +libclanGL_la_LIBADD = -lGL -lGLU -lXxf86vm ../Display/libclanDisplay.la
+ endif
  
  EXTRA_DIST = \
-  WGL/displaycard_opengl_win32.cpp \
 --- ClanLib-0.7.4/Sources/GUI/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
 +++ ClanLib-0.7.4/Sources/GUI/Makefile.am	2003-10-09 23:19:13.152058288 +0200
 @@ -82,6 +82,8 @@
@@ -125,14 +125,14 @@
  
  libclanVorbis_la_LDFLAGS = \
    -release $(LT_RELEASE) \
---- ClanLib-0.7.6/Sources/Core/Makefile.am.orig	2003-11-11 11:13:24.000000000 +0100
-+++ ClanLib-0.7.6/Sources/Core/Makefile.am	2003-11-14 07:40:34.643122784 +0100
+--- ClanLib-0.7.7/Sources/Core/Makefile.am.orig	2003-11-11 11:13:24.000000000 +0100
++++ ClanLib-0.7.7/Sources/Core/Makefile.am	2003-11-14 07:40:34.643122784 +0100
 @@ -115,7 +115,7 @@
  endif
  
  # FIXME: Hardcoding these here might not be a good idea
--libclanCore_la_LIBADD = -lHermes -lpthread
-+libclanCore_la_LIBADD = -lHermes -lpthread -ldl
+-libclanCore_la_LIBADD = -lHermes @LIBPTHREAD@
++libclanCore_la_LIBADD = -lHermes @LIBPTHREAD@ -ldl
  
  libclanCore_la_LDFLAGS = \
    -release $(LT_RELEASE) \
