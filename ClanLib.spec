@@ -3,10 +3,10 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
 Version:	0.4.3
 Release:	1
-Copyright:	LGPL
+License:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
-Source:		http://dark.x.dtu.dk/clansoft/clanlib/download/%{name}-%{version}.tar.gz
+Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/RPMS/%{name}-%{version}.tar.gz
 Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-Magick.patch
 URL:		http://clanlib.org
@@ -199,7 +199,7 @@ make docs_install \
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so*
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/ClanLib/lib*.so*
 
-gzip -9nf README CREDITS FAQ $RPM_BUILD_ROOT%{_mandir}/man?/* || : 
+gzip -9nf README CREDITS FAQ $RPM_BUILD_ROOT%{_mandir}/man?/*
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
