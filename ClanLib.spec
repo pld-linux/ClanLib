@@ -59,8 +59,12 @@ do kompilacji programów korzystaj±cych z CleanLib.
 
 %prep
 %setup -q
+
 %build
-%configure --enable-static --enable-shared
+LDFLAGS="-s"; export LDFLAGS
+%configure \
+	--enable-static \
+	--enable-shared
 make
 
 %install
