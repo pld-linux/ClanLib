@@ -185,23 +185,23 @@ export CFLAGS CXXFLAGS LDFLAGS
 	--enable-network \
 	--enable-dyn
 make
-make clanGL
-make clanMikMod
-make clanMagick
-make clanPNG
-make clanMPEG
-make clanGUI
-make docs
+%{__make} clanGL
+%{__make} clanMikMod
+%{__make} clanMagick
+%{__make} clanPNG
+%{__make} clanMPEG
+%{__make} clanGUI
+%{__make} docs
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make 	install \
+%{__make} 	install \
 	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
 	TARGET_PREFIX="$RPM_BUILD_ROOT%{_libdir}/ClanLib" \
 	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
 	INC_PREFIX="$RPM_BUILD_ROOT%{_includedir}"
 
-make docs_install \
+%{__make} docs_install \
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 	HTML_PREFIX="`pwd`/html"
 
