@@ -1,18 +1,14 @@
-diff -durN ClanLib-0.4.3.orig/configure.in ClanLib-0.4.3/configure.in
---- ClanLib-0.4.3.orig/configure.in	Mon Mar 13 18:55:21 2000
-+++ ClanLib-0.4.3/configure.in	Sun Apr 16 18:14:18 2000
-@@ -227,12 +227,12 @@
-     comp_mode="-DDEBUG=1 -g"
+--- ClanLib-0.7.2/configure.in.orig	2003-02-25 22:46:52.000000000 +0100
++++ ClanLib-0.7.2/configure.in	2003-04-26 16:14:12.000000000 +0200
+@@ -576,10 +576,9 @@
+ AC_ARG_ENABLE(debug,[  --enable-debug          Enable debugging support],
+ [
+   if test "$enableval" == "yes"; then
+-    CXXFLAGS="$CXXFLAGS -DDEBUG=1 -g3 -ggdb3 -O0"
++    CXXFLAGS="$CXXFLAGS -DDEBUG=1 -g3 -ggdb3"
      AC_MSG_RESULT([enabled])
    else
--    comp_mode="-O3"
-+    comp_mode=""
+-    CXXFLAGS="$CXXFLAGS -O2"
      AC_MSG_RESULT([*********** <-- DISABLED --> ***********])
    fi
  ],
- [
--  comp_mode="-O3"
-+  comp_mode=""
-   AC_MSG_RESULT([********** DISABLED FOR STABLE RELEASE VERSION **********])
- ])
- 

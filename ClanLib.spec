@@ -15,7 +15,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
 Patch0:		%{name}-OPT.patch
-Patch1:		%{name}-config.patch
+#Patch1:		%{name}-config.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
@@ -59,7 +59,7 @@ gráficos por exemplo).
 
 %package devel
 Summary:	ClanLib development package
-Summary(pl):	pakiet programistyczny dla ClanLib
+Summary(pl):	Pakiet programistyczny dla ClanLib
 Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
@@ -74,16 +74,27 @@ This is the development add-on package that includes the header files
 needed to compile new ClanLib applications.
 
 %description devel -l pl
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
+Programistyczne dodatki do ClanLiba, zawieraj± pliki nag³ówkowe
 potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %description devel -l pt_BR
 Arquivos que possibilitam o desenvolvimento de aplicativos utilizando
 a biblioteca Clanlib.
 
+%package doc
+Summary:	ClanLib reference documentation for programmers
+Summary(pl):	Dokumentacja programisty do biblioteki ClanLib
+Group:		Documentation
+
+%description doc
+ClanLib reference documentation for programmers.
+
+%description doc -l pl
+Dokumentacja programisty do biblioteki ClanLib
+
 %package svgalib
 Summary:	svgalib target for ClanLib
-Summary(pl):	obs³uga svgalib dla ClanLib
+Summary(pl):	Obs³uga svgalib dla ClanLib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
@@ -91,23 +102,24 @@ Requires:	%{name} = %{version}
 This is the svgalib target for ClanLib.
 
 %description svgalib -l pl
-Obs³uga svgalib dla ClanLib-a.
+Obs³uga svgalib dla ClanLiba.
 
 %package OpenGL
 Summary:	OpenGL target for ClanLib
-Summary(pl):	obs³uga OpenGL dla ClanLib
+Summary(pl):	Obs³uga OpenGL dla ClanLib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	OpenGL
 
 %description OpenGL
 This is the OpenGL target for ClanLib.
 
 %description OpenGL -l pl
-Obs³uga OpenGL dla ClanLib-a.
+Obs³uga OpenGL dla ClanLiba.
 
 %package GGI
 Summary:	GGI target for ClanLib
-Summary(pl):	obs³uga GGI dla ClanLib
+Summary(pl):	Obs³uga GGI dla ClanLib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
@@ -115,7 +127,7 @@ Requires:	%{name} = %{version}
 This is the GGI target for ClanLib.
 
 %description GGI -l pl
-Obs³uga GGI dla ClanLib-a.
+Obs³uga GGI dla ClanLiba.
 
 %package MikMod
 Summary:	MikMod module for ClanLib
@@ -127,7 +139,7 @@ Requires:	%{name} = %{version}
 MikMod module for ClanLib.
 
 %description MikMod -l pl
-Modu³ Mikmod dla ClanLib-a.
+Modu³ Mikmod dla ClanLiba.
 
 %package Vorbis
 Summary:	Vorbis module for ClanLib
@@ -139,7 +151,7 @@ Requires:	%{name} = %{version}
 Vorbis module for ClanLib.
 
 %description Vorbis -l pl
-Modu³ Vorbis dla ClanLib-a.
+Modu³ Vorbis dla ClanLiba.
 
 #%package TTF
 #Summary:	TTF module for ClanLib
@@ -151,26 +163,23 @@ Modu³ Vorbis dla ClanLib-a.
 #TTF module for ClanLib.
 
 #%description TTF -l pl
-#Modu³ TTF dla ClanLib-a.
+#Modu³ TTF dla ClanLiba.
 
 %package static
-Summary:	ClanLib development package
-Summary(pl):	pakiet programistyczny dla ClanLib
+Summary:	ClanLib static libraries
+Summary(pl):	Statyczne biblioteki ClanLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-This is the development add-on package that includes the header files
-needed to compile new ClanLib applications.
+This package contains static versions of ClanLib libraries.
 
 %description static -l pl
-Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
-potrzebne do kompilacji programów korzystaj±cych z ClanLib.
+Ten pakiet zawiera statyczne wersje bibliotek ClanLib.
 
 %prep
 %setup -q
-#%patch0 -p1
-#%patch1 -p1
+%patch0 -p1
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
@@ -208,18 +217,41 @@ rm -f missing
 # in fact - non existenz in actual configure...
 #	--enable-mpeg
 
-
 %{__make}
-#%{__make} docs
+
+#%{__make} docs  doesn't work
+cd Documentation
+%{__autoconf}
+cp -f Makefile Makefile.tmp
+%configure
+mv -f Makefile.tmp Makefile
+Utilities/webbuilder.pl documentation.theme index.xml
+Utilities/webbuilder.pl documentation.theme Tutorial/index.xml
+# tictactoe.zip contains Win32 executable
+rm -f Tutorial/index.xml Tutorial/TicTacToe/{.cvsignore,tictactoe.zip}
+%{__make} -C Overview
+%{__make} -C Reference
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT	
 
 #%{__make} docs_install \
 #	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 #	HTML_PREFIX="`pwd`/html"
+%{__make} install -C Documentation/Overview \
+	HTML_PREFIX="`pwd`/html"
+%{__make} html_install -C Documentation/Reference \
+	HTML_PREFIX="`pwd`/html"
+cp -rf Documentation/index.html Documentation/Tutorial html
+
+# missing from make install
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_aclocaldir}}
+install Setup/Unix/clanlib-config $RPM_BUILD_ROOT%{_bindir}
+install Documentation/clanlib-config.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install Setup/Unix/clanlib.m4 $RPM_BUILD_ROOT%{_aclocaldir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -241,6 +273,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc BUGS CREDITS NEWS README README.gui 
 %attr(755,root,root) %{_libdir}/libclanApp.so.*.*
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
 %attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
@@ -272,11 +305,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-#%doc README CREDITS html
-%doc README CREDITS 
+%attr(755,root,root) %{_bindir}/clanlib-config
 %attr(755,root,root) %{_libdir}/*.so
-#%attr(755,root,root) %{_bindir}/*
+%{_libdir}/*.la
 %{_includedir}/ClanLib
+%{_aclocaldir}/*.m4
+%{_mandir}/man1/clanlib-config.1*
+
+%files doc
+%defattr(644,root,root,755)
+%doc README.upgrade html
 
 %files static
 %defattr(644,root,root,755)
