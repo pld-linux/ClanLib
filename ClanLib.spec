@@ -7,6 +7,7 @@ Copyright:	LGPL
 Group:		Libraries
 Group(pl):	Biblioteki
 Source:		http://dark.x.dtu.dk/clansoft/clanlib/download/%{name}-%{version}.tar.gz
+Patch0:		%{name}-OPT.patch
 URL:		http://clanlib.org
 Requires:	Hermes >= 1.3.1
 BuildRequires:	libpng-devel
@@ -78,6 +79,19 @@ This is the OpenGL target for ClanLib.
 %description -l pl OpenGL
 Obs³uga OpenGL dla ClanLib-a.
 
+%package GGI
+Summary:	GGI target for ClanLib
+Summary(pl):	obs³uga GGI dla ClanLib
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description GGI
+This is the GGI target for ClanLib. 
+
+%description -l pl GGI
+
+Obs³uga OpenGL dla ClanLib-a.
 %package X11
 Summary:	X11 target for ClanLib
 Summary(pl):	obs³uga X11 dla ClanLib
@@ -136,16 +150,20 @@ do kompilacji programów korzystaj±cych z CleanLib.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./autogen.sh
-LDFLAGS="-s"; export LDFLAGS
+CFLAGS="$RPM_OPT_FLAGS"
+CXXFLAGS="$RPM_OPT_FLAGS" # note: rtti is needed --- ClanLib uses exceptions!
+LDFLAGS="-s"
+export CFLAGS CXXFLAGS LDFLAGS
 %configure \
 	--enable-static \
 	--enable-shared \
 	--enable-x11 \
 	--enable-fbdev \
-	--disable-ggi \
+	--enable-ggi \
 	--enable-opengl \
 	--enable-svgalib \
 	--disable-ptc \
@@ -209,6 +227,10 @@ rm -rf $RPM_BUILD_ROOT
 %files X11
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ClanLib/libclan-display-x11.so*
+
+%files GGI
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-ggi.so*
 
 %files OpenGL
 %defattr(644,root,root,755)
