@@ -212,8 +212,6 @@ rm -rf $RPM_BUILD_ROOT
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 	HTML_PREFIX="`pwd`/html"
 
-gzip -9nf README CREDITS
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -263,8 +261,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *gz
-%doc html
+%doc README CREDITS html
 %attr(755,root,root) %{_libdir}/*.so
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/ClanLib
