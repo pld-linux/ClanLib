@@ -21,6 +21,8 @@ BuildRequires:	ImageMagick-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel
 BuildRequires:	perl
+BuildRequires:	libggi-devel
+BuildRequires:	libgii-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
