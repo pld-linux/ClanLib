@@ -14,6 +14,7 @@ Release:	0.1
 License:	LGPL v2
 Group:		Libraries
 Source0:	http://www.clanlib.org/~sphair/download/%{name}-%{version}-1.tar.bz2
+# Source0-md5:	cbaa39f7de761e2cba52ddd97795150e
 Patch0:		%{name}-OPT.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
