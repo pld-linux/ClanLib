@@ -168,8 +168,7 @@ autoconf
 %configure \
 	--enable-static \
 	--enable-shared \
-	%{?debug:--enable-debug}%{!?debug:--disable-debug} \
-	--disable-debug \
+	--%{?debug:en}%{!?debug:dis}able-debug \
 	--enable-x11 \
 	--enable-fbdev \
 	--enable-vidmode \
