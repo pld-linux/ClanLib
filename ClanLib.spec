@@ -168,6 +168,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
 rm -f missing
+%{__libtoolize}
 %{__aclocal}
 %{__automake}
 %{__autoconf}
@@ -207,10 +208,7 @@ rm -f missing
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
-	LIB_PREFIX="$RPM_BUILD_ROOT%{_libdir}" \
-	TARGET_PREFIX="$RPM_BUILD_ROOT%{_libdir}/ClanLib" \
-	BIN_PREFIX="$RPM_BUILD_ROOT%{_bindir}" \
-	INC_PREFIX="$RPM_BUILD_ROOT%{_includedir}"
+	DESTDIR=$RPM_BUILD_ROOT	
 
 %{__make} docs_install \
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
