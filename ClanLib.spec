@@ -3,7 +3,7 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.6.1
-Release:	4
+Release:	5
 License:	LGPL
 Group:		Libraries
 Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-japj/%{name}-%{version}/%{name}-%{version}-1.tar.gz
@@ -20,7 +20,7 @@ BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	libvorbis-devel
+BuildRequires:	libvorbis-devel >= 1:1.0
 # If broken - don't require it....
 #BuildRequires:	lua-devel
 BuildRequires:	perl
