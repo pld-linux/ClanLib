@@ -60,7 +60,7 @@ do kompilacji programów korzystaj±cych z CleanLib.
 %prep
 %setup -q
 %build
-%configure
+%configure --enable-static --enable-shared
 make
 
 %install
@@ -90,11 +90,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/datafile_compiler
 %{_includedir}/ClanLib
 
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
+#%files static
+#%defattr(644,root,root,755)
+#%{_libdir}/lib*.a
 
 %changelog
+* Wed Jul 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
+  [0.1.15-1]
+- commented out static subpackage (don't know how to make it)
+
 * Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
   [0.1.14-3]
 - fixed install
