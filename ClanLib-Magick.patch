@@ -1,12 +1,20 @@
-
-This patch makes ClanLib-0.4.3 compile with ImageMagick-5.1.1
-I know it probably could be done i one ImageMagick call, but I don't know what
-the code was ment to do.
-
-diff -durN ClanLib-0.4.3.orig/Sources/Magick/provider_magick.cpp ClanLib-0.4.3/Sources/Magick/provider_magick.cpp
+diff -Nur ClanLib-0.4.3.orig/Sources/Magick/provider_magick.cpp ClanLib-0.4.3/Sources/Magick/provider_magick.cpp
 --- ClanLib-0.4.3.orig/Sources/Magick/provider_magick.cpp	Mon Mar 13 18:12:50 2000
-+++ ClanLib-0.4.3/Sources/Magick/provider_magick.cpp	Wed Apr 19 10:04:12 2000
-@@ -138,12 +138,9 @@
++++ ClanLib-0.4.3/Sources/Magick/provider_magick.cpp	Fri Mar 16 22:31:13 2001
+@@ -126,10 +126,11 @@
+ {
+ 	Image *image;
+ 	ImageInfo image_info;
++	ExceptionInfo exception_info;
+ 
+ 	GetImageInfo(&image_info);
+ 	strcpy(image_info.filename, name.c_str());
+-	image = ReadImage(&image_info);
++	image = ReadImage(&image_info, &exception_info);
+ //		if (!image)
+ //			throw CL_Error("error while trying to open file with the Magick provider");
+ 	cl_assert(image);
+@@ -138,12 +139,9 @@
  	height = image->rows;
  	pitch = width * get_bytes_per_pixel();
  	
@@ -17,11 +25,11 @@ diff -durN ClanLib-0.4.3.orig/Sources/Magick/provider_magick.cpp ClanLib-0.4.3/S
 +	float *rgbadata = new float[width*height*4];
  	
 -	GetPixels(image, rdata, gdata, bdata, adata);
-+	GetPixels(image, 0,0,width,height,"RGBA",FloatPixel,rgbadata);
++	DispatchImage(image, 0,0,width,height,"RGBA",FloatPixel,rgbadata);
  	DestroyImage(image);
  	
  	// here comes the tricky part ... hmhmhm... Quicky Mart
-@@ -186,10 +183,10 @@
+@@ -186,10 +184,10 @@
  	for (int y=0; y<height; y++)
  		for (int x=0; x<width; x++)
  		{
@@ -36,7 +44,7 @@ diff -durN ClanLib-0.4.3.orig/Sources/Magick/provider_magick.cpp ClanLib-0.4.3/S
  
  			switch (get_bytes_per_pixel())
  			{
-@@ -212,10 +209,7 @@
+@@ -212,10 +210,7 @@
  			}
  		}
  

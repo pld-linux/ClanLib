@@ -12,16 +12,14 @@ Patch0:		%{name}-OPT.patch
 Patch1:		%{name}-Magick.patch
 URL:		http://clanlib.org
 Requires:	Hermes >= 1.3.1
-BuildRequires:	libpng >= 1.0.8
-BuildRequires:	zlib-devel
+BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	svgalib-devel
 BuildRequires:	OpenGL-devel
-BuildRequires:	ImageMagick-devel >= 5.1.1
+BuildRequires:	ImageMagick-devel >= 5.2.9
 BuildRequires:	libmikmod-devel
-BuildRequires:	libpng >= 1.0.8
 BuildRequires:	perl
 BuildRequires:	libggi-devel
 BuildRequires:	libgii-devel
@@ -98,8 +96,8 @@ Requires:	%{name} = %{version}
 This is the GGI target for ClanLib.
 
 %description -l pl GGI
-
 Obs³uga OpenGL dla ClanLib-a.
+
 %package X11
 Summary:	X11 target for ClanLib
 Summary(pl):	obs³uga X11 dla ClanLib
@@ -139,10 +137,10 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description MikMod
-MikMod module for ClanLib
+MikMod module for ClanLib.
 
 %description -l pl MikMod
-Modu³ Mikmod dla ClanLib
+Modu³ Mikmod dla ClanLib-a.
 
 %package static
 Summary:	ClanLib development package
@@ -158,7 +156,7 @@ needed to compile new ClanLib applications.
 
 %description -l pl static
 Programistyczne dodatki do ClanLib-a, zawieraj± pliki nag³ówkowe
-potrzebne do kompilacji programów korzystaj±cych z CleanLib.
+potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %prep
 %setup -q
