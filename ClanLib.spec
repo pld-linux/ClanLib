@@ -93,22 +93,3 @@ rm -rf $RPM_BUILD_ROOT
 #%files static
 #%defattr(644,root,root,755)
 #%{_libdir}/lib*.a
-
-%changelog
-* Wed Jul 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
-  [0.1.15-1]
-- commented out static subpackage (don't know how to make it)
-
-* Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
-  [0.1.14-3]
-- fixed install
-
-* Tue Apr 20 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.1.14-2]
-- added BuildPrereq (libpng-devel, libz-devel, Hermes-devel).
-- added -q %setup patameter,
-- added static subpackage.
-
-* Mon Apr 19 1999 Konrad Stepieñ <kornad@interdata.com.pl>
-  [0.1.14-1]
-- initial version
