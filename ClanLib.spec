@@ -264,7 +264,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
 
 %files TTF
-%defattr(755,root,root)
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
 
 %files devel
