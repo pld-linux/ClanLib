@@ -1,4 +1,4 @@
-Summary:	ClanLib, the platform independent game SDK.
+Summary:	ClanLib, the platform independent game SDK
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
 Version:	0.5.0
@@ -18,14 +18,15 @@ URL:		http://www.clanlib.org/
 Requires:	Hermes >= 1.3.1
 #OpenGL is disabled in ClanLib 0.5.0 so we disable this requirement
 #Requires:	OpenGL
-BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	zlib-devel
 BuildRequires:	Hermes-devel >= 1.3.1
-BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	freetype-devel >= 2.0
 #BuildRequires:	OpenGL-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libstdc++-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	perl
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
