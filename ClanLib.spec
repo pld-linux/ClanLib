@@ -9,8 +9,10 @@ Group(pl):	Biblioteki
 Source:		http://dark.x.dtu.dk/clansoft/clanlib/download/%{name}-%{version}.tgz
 URL:		http://clanlib.org
 BuildPrereq:	libpng-devel
-BuildPrereq:	libz-devel
+BuildPrereq:	zlib-devel
 BuildPrereq:	Hermes-devel
+BuildPrereq:	libstdc++-devel
+BuildPrereq:	XFree86-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
