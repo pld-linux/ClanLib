@@ -1,0 +1,11 @@
+diff -Nur ClanLib-0.6.5/Sources/GL/GLX/displaycard_glx.cpp ClanLib-0.6.5-GL/Sources/GL/GLX/displaycard_glx.cpp
+--- ClanLib-0.6.5/Sources/GL/GLX/displaycard_glx.cpp	2002-02-16 17:10:41.000000000 +0100
++++ ClanLib-0.6.5-GL/Sources/GL/GLX/displaycard_glx.cpp	2003-05-30 20:07:40.000000000 +0200
+@@ -11,6 +11,7 @@
+ 
+ 	------------------------------------------------------------------------
+ */
++#define GLX_GLXEXT_PROTOTYPES 
+ 
+ #ifdef USE_OPENGL
+ 
