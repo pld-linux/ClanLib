@@ -1,31 +1,30 @@
 Summary:	ClanLib, the platform independent game SDK.
 Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Name:		ClanLib
-Version:	0.4.3
-Release:	3
+Version:	0.5.0
+Release:	1
 License:	LGPL
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/%{name}-%{version}.tar.gz
+Source0:	http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/%{name}-%{version}-1.tar.gz
 Patch0:		%{name}-OPT.patch
-Patch1:		%{name}-Magick.patch
-URL:		http://clanlib.org/
+URL:		http://www.clanlib.org/
 Requires:	Hermes >= 1.3.1
-Requires:	OpenGL
+#OpenGL is disabled in ClanLib 0.5.0 so we disable this requirement
+#Requires:	OpenGL
 BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	zlib-devel
 BuildRequires:	Hermes-devel >= 1.3.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
-BuildRequires:	svgalib-devel
-BuildRequires:	OpenGL-devel
-BuildRequires:	ImageMagick-devel >= 5.2.9
+#BuildRequires:	OpenGL-devel
 BuildRequires:	libmikmod-devel
+BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	libvorbis-devel
 BuildRequires:	perl
-BuildRequires:	libggi-devel
-BuildRequires:	libgii-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -107,38 +106,6 @@ This is the GGI target for ClanLib.
 %description -l pl GGI
 Obs³uga OpenGL dla ClanLib-a.
 
-%package X11
-Summary:	X11 target for ClanLib
-Summary(pl):	obs³uga X11 dla ClanLib
-Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Requires:	%{name} = %{version}
-
-%description X11
-This is the X11 target for ClanLib.
-
-%description -l pl X11
-Obs³uga X11 dla ClanLib-a.
-
-%package Magick
-Summary:	ImageMagick module for ClanLib
-Summary(pl):	Modu³ ImageMagick dla ClanLib
-Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Requires:	%{name} = %{version}
-
-%description Magick
-This is the ImageMagic add-on package for ClanLib. It provides support
-to most known graphics file-formats.
-
-%description -l pl Magick
-Pozwala na obs³ugê praktycznie dowolnych formatów plików graficznych
-przez aplikacje ClanLib poprzez biblioteki ImageMagic-a.
-
 %package MikMod
 Summary:	MikMod module for ClanLib
 Summary(pl):	Modu³ Mikmod dla ClanLib
@@ -153,6 +120,36 @@ MikMod module for ClanLib.
 
 %description -l pl MikMod
 Modu³ Mikmod dla ClanLib-a.
+
+%package Vorbis
+Summary:	Vorbis module for ClanLib
+Summary(pl):	Modu³ Vorbis dla ClanLib
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description Vorbis
+Vorbis module for ClanLib.
+
+%description -l pl Vorbis
+Modu³ Vorbis dla ClanLib-a.
+
+%package TTF
+Summary:	TTF module for ClanLib
+Summary(pl):	Modu³ TTF dla ClanLib
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description TTF
+TTF module for ClanLib.
+
+%description -l pl TTF
+Modu³ TTF dla ClanLib-a.
 
 %package static
 Summary:	ClanLib development package
@@ -173,8 +170,7 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+#%patch0 -p1
 
 %build
 ./autogen.sh
@@ -182,23 +178,31 @@ potrzebne do kompilacji programów korzystaj±cych z ClanLib.
 %configure \
 	--enable-static \
 	--enable-shared \
+	%{?debug:--enable-debug}%{!?debug:--disable-debug} \
+	--disable-debug \
 	--enable-x11 \
 	--enable-fbdev \
-	--enable-ggi \
-	--enable-opengl \
-	--enable-svgalib \
-	--disable-ptc \
 	--enable-vidmode \
 	--enable-clansound \
 	--enable-network \
-	--enable-dyn
+%ifarch %{ix86}
+	--enable-asm386 \
+%endif
+	--enable-dyn \
+	--enable-gui \
+	--enable-vorbis \
+	--enable-mikmod \
+	--enable-png \
+	--enable-jpeg \
+	--enable-smalljpeg \
+	--enable-ttf
+
+# not functional right now	
+#	--enable-opengl \
+#	--enable-mpeg
+	
+
 %{__make}
-%{__make} clanGL
-%{__make} clanMikMod
-%{__make} clanMagick
-%{__make} clanPNG
-%{__make} clanMPEG
-%{__make} clanGUI
 %{__make} docs
 
 %install
@@ -213,7 +217,7 @@ rm -rf $RPM_BUILD_ROOT
 	MAN_PREFIX="$RPM_BUILD_ROOT%{_mandir}" \
 	HTML_PREFIX="`pwd`/html"
 
-gzip -9nf README CREDITS FAQ
+gzip -9nf README CREDITS
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -224,58 +228,52 @@ gzip -9nf README CREDITS FAQ
 %post   MikMod -p /sbin/ldconfig
 %postun MikMod -p /sbin/ldconfig
 
-%post   Magick -p /sbin/ldconfig
-%postun Magick -p /sbin/ldconfig
+%post   TTF -p /sbin/ldconfig
+%postun TTF -p /sbin/ldconfig
+
+%post   Vorbis -p /sbin/ldconfig
+%postun Vorbis -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanApp.so.*.*
 %attr(755,root,root) %{_libdir}/libclanCore.so.*.*
+%attr(755,root,root) %{_libdir}/libclanDisplay.so.*.*
 %attr(755,root,root) %{_libdir}/libclanGUI.so.*.*
-%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
+%attr(755,root,root) %{_libdir}/libclan*JPEG.so.*.*
+%attr(755,root,root) %{_libdir}/libclanNetwork.so.*.*
+#%attr(755,root,root) %{_libdir}/libclanMPEG.so.*.*
 %attr(755,root,root) %{_libdir}/libclanPNG.so.*.*
-%dir %{_libdir}/ClanLib
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-fbdev.so*
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-input-tty.so*
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-network.so*
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-sound.so*
-
-%files X11
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-x11.so*
-
-%files GGI
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-ggi.so*
+%attr(755,root,root) %{_libdir}/libclanSound.so.*.*
 
 %files OpenGL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanGL.so.*.*
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-glx.so*
-
-%files svgalib
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-svgalib.so*
-
-%files Magick
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanMagick.so.*.*
+#%attr(755,root,root) %{_libdir}/libclanGL.so.*.*
+#%attr(755,root,root) %{_libdir}/ClanLib/libclan-display-glx.so*
 
 %files MikMod
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanMikMod.so.*.*
 
+%files Vorbis
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclanVorbis.so.*.*
+
+%files TTF
+%defattr(755,root,root)
+%attr(755,root,root) %{_libdir}/libclanTTF.so.*.*
+
 %files devel
 %defattr(644,root,root,755)
 %doc *gz
 %doc html
-%{_mandir}/man?/*
 %attr(755,root,root) %{_libdir}/*.so
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/ClanLib
 
-#%files static
-#%defattr(644,root,root,755)
+%files static
+%defattr(644,root,root,755)
 #%{_libdir}/lib*.a
