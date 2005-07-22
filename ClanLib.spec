@@ -14,7 +14,7 @@ URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
 BuildRequires:	OpenGL-devel
-BuildRequires:	SDL-devel >= 1.2.0
+BuildRequires:	SDL_gfx-devel >= 1.2.0
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -254,8 +254,8 @@ rm -rf autom4te.cache
 # note: rtti is needed --- ClanLib uses exceptions!
 %{__libtoolize}
 %{__aclocal}
-%{__automake}
-%{__autoconf}
+#%{__automake}
+#%{__autoconf}
 %configure \
 	--enable-static \
 	--enable-shared \
