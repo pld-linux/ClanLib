@@ -254,10 +254,10 @@ rm -rf autom4te.cache
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
-#%{__libtoolize}
-#%{__aclocal}
-#%{__automake}
-#%{__autoconf}
+%{__libtoolize}
+%{__aclocal}
+%{__automake}
+%{__autoconf}
 %configure \
 	--enable-static \
 	--enable-shared \
