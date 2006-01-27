@@ -1,0 +1,22 @@
+--- ClanLib-0.8.0-RC1/Sources/GUI/inputdialog_generic.h.orig	2005-02-27 18:17:28.000000000 +0100
++++ ClanLib-0.8.0-RC1/Sources/GUI/inputdialog_generic.h	2006-01-25 22:43:43.927702750 +0100
+@@ -57,7 +57,7 @@
+ 		const std::string &button2,
+ 		const std::string &button3);
+ 
+-	CL_InputDialog_Generic::~CL_InputDialog_Generic();
++	~CL_InputDialog_Generic();
+ 
+ 	CL_InputDialog *inputdialog;
+ 
+--- ClanLib-0.8.0-RC1/Sources/GUI/messagebox_generic.h.orig	2005-02-27 18:17:28.000000000 +0100
++++ ClanLib-0.8.0-RC1/Sources/GUI/messagebox_generic.h	2006-01-25 22:52:02.790879750 +0100
+@@ -51,7 +51,7 @@
+ 		const std::string &button2,
+ 		const std::string &button3);
+ 
+-	CL_MessageBox_Generic::~CL_MessageBox_Generic();
++	~CL_MessageBox_Generic();
+ 
+ 	std::string text;
+ 
