@@ -10,8 +10,8 @@ Group:		Libraries
 # http://www.clanlib.org/download/releases-0.8/ClanLib-0.8.0-RC1.tgz
 Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}-RC1.tgz
 # Source0-md5:	edda2e3000ec4b02e435982ff44a3841
- 
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-gcc4.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
@@ -26,6 +26,7 @@ BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
+BuildRequires:	libxslt-progs
 BuildRequires:	perl-base
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -248,7 +249,8 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 
 %prep
 %setup -q -n %{name}-%{version}-RC1
-#%%patch0 -p1
+%patch0 -p1
+%patch1 -p1
 
 rm -rf autom4te.cache
 
@@ -267,7 +269,6 @@ rm -rf autom4te.cache
 %endif
 	--enable-dyn
 # directfb disabled now
-# --enable-clanJavaScript wants mozilla-config
 
 %{__make}
 
@@ -357,7 +358,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-#%%{_docdir}/clanlib
+%{_docdir}/clanlib
 
 %files static
 %defattr(644,root,root,755)
