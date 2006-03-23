@@ -3,23 +3,21 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.8.0
-Release:	0.RC1.1
+Release:	0.RC2.1
 License:	LGPL v2
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
-# http://www.clanlib.org/download/releases-0.8/ClanLib-0.8.0-RC1.tgz
-Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}-RC1.tgz
-# Source0-md5:	edda2e3000ec4b02e435982ff44a3841
+Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}-RC2.tgz
+# Source0-md5:	808382d5e181aff62a36c6d824fcf058
 Patch0:		%{name}-link.patch
 Patch1:		%{name}-gcc4.patch
 URL:		http://www.clanlib.org/
 # doesn't build with 0.9.12
 #BuildRequires:	DirectFB-devel = 0.9.9
-BuildRequires:	OpenGL-devel
+BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL_gfx-devel >= 1.2.0
-BuildRequires:	XFree86-devel
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.59-9
+BuildRequires:	automake >= 1.6
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.0.8
@@ -28,6 +26,8 @@ BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
 BuildRequires:	libxslt-progs
 BuildRequires:	perl-base
+BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libXxf86vm-devel
 Requires:	OpenGL
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,6 +58,8 @@ Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
+# for libclanDisplay
+Requires:	xorg-lib-libXxf86vm-devel
 
 %description devel
 This is the development add-on package that includes the header files
@@ -99,7 +101,6 @@ Summary:	OpenGL ClanLib library
 Summary(pl):	Biblioteka OpenGL dla ClanLiba
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	OpenGL
 
 %description OpenGL
 OpenGL ClanLib library.
@@ -113,7 +114,9 @@ Summary(pl):	Pliki nag³ówkowe biblioteki OpenGL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-OpenGL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	OpenGL-devel
+Requires:	OpenGL-GLU-devel
+Requires:	xorg-lib-libXi-devel
+Requires:	xorg-lib-libXxf86vm-devel
 
 %description OpenGL-devel
 Header files for OpenGL ClanLib library.
@@ -248,7 +251,7 @@ Static Vorbis ClanLib library.
 Statyczna biblioteka Vorbis dla ClanLiba.
 
 %prep
-%setup -q -n %{name}-%{version}-RC1
+%setup -q -n %{name}-%{version}-RC2
 %patch0 -p1
 %patch1 -p1
 
