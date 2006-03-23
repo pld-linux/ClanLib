@@ -16,7 +16,7 @@
  else
 -libclanDisplay_la_LIBADD = -L/usr/X11R6/lib/ -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
 +LXLIBDIR=-L/usr/X11R6/lib
-+libclanDisplay_la_LIBADD = $(LXLIBDIR) -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
++libclanDisplay_la_LIBADD = $(LXLIBDIR) -lX11 -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
  endif
  
  libclanDisplay_la_SOURCES = \
