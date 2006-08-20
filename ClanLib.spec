@@ -3,18 +3,16 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.8.0
-Release:	0.RC2.1
-License:	LGPL v2
+Release:	1
+License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
-Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}-RC2.tgz
-# Source0-md5:	808382d5e181aff62a36c6d824fcf058
+Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}.tgz
+# Source0-md5:	3e183a801a31f646b012db2d82f97ff3
 Patch0:		%{name}-link.patch
-Patch1:		%{name}-gcc4.patch
 URL:		http://www.clanlib.org/
-# doesn't build with 0.9.12
-#BuildRequires:	DirectFB-devel = 0.9.9
 BuildRequires:	OpenGL-GLU-devel
+BuildRequires:	SDL >= 1.2.0
 BuildRequires:	SDL_gfx-devel >= 1.2.0
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
@@ -26,6 +24,7 @@ BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
 BuildRequires:	libxslt-progs
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
 Requires:	OpenGL
@@ -192,7 +191,8 @@ Summary(pl):	Pliki nag³ówkowe biblioteki SDL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-SDL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
-Requires:	SDL-devel
+Requires:	SDL-devel >= 1.2.0
+Requires:	SDL_gfx-devel >= 1.2.0
 
 %description SDL-devel
 Header files for SDL ClanLib library.
@@ -251,9 +251,8 @@ Static Vorbis ClanLib library.
 Statyczna biblioteka Vorbis dla ClanLiba.
 
 %prep
-%setup -q -n %{name}-%{version}-RC2
+%setup -q
 %patch0 -p1
-%patch1 -p1
 
 rm -rf autom4te.cache
 
@@ -305,7 +304,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CREDITS NEWS README README.sdl TODO-RSN
+%doc COPYING CREDITS NEWS README README.sdl TODO-RSN
 %attr(755,root,root) %{_libdir}/libclanApp-0.8.so.*.*
 %attr(755,root,root) %{_libdir}/libclanCore-0.8.so.*.*
 %attr(755,root,root) %{_libdir}/libclanDisplay-0.8.so.*.*
