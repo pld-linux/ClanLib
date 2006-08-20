@@ -10,13 +10,12 @@
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
 --- ClanLib-0.7.8/Sources/Display/Makefile.am.orig	2003-09-15 16:18:50.000000000 +0200
 +++ ClanLib-0.7.8/Sources/Display/Makefile.am	2003-10-09 23:16:41.208157272 +0200
-@@ -3,7 +3,8 @@
+@@ -3,7 +3,7 @@
  # FIXME: This needs to be @LIBS@ or @X11LIBS@ or something like that
  if WIN32
  else
 -libclanDisplay_la_LIBADD = -L/usr/X11R6/lib/ -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
-+LXLIBDIR=-L/usr/X11R6/lib
-+libclanDisplay_la_LIBADD = $(LXLIBDIR) -lX11 -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
++libclanDisplay_la_LIBADD = -lX11 -lpng -ljpeg -lXxf86vm @X_LIBS@ ../Core/libclanCore.la
  endif
  
  libclanDisplay_la_SOURCES = \
