@@ -27,6 +27,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
+Obsoletes:	ClanLib-TTF
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -58,6 +59,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 # for libclanDisplay
 Requires:	xorg-lib-libXxf86vm-devel
+Obsoletes:	ClanLib-TTF-devel
 
 %description devel
 This is the development add-on package that includes the header files
@@ -76,6 +78,7 @@ Summary:	ClanLib static libraries
 Summary(pl):	Statyczne biblioteki ClanLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	ClanLib-TTF-static
 
 %description static
 This package contains static versions of ClanLib libraries.
