@@ -3,7 +3,7 @@ Summary(pl):	ClanLib, niezale¿ny od platformy SDK do gier
 Summary(pt_BR):	SDK Clanlib
 Name:		ClanLib
 Version:	0.8.0
-Release:	1
+Release:	2
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
@@ -14,6 +14,7 @@ URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL >= 1.2.0
 BuildRequires:	SDL_gfx-devel >= 1.2.0
+BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
 BuildRequires:	libjpeg-devel
@@ -25,8 +26,6 @@ BuildRequires:	libvorbis-devel >= 1:1.0
 BuildRequires:	libxslt-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
-BuildRequires:	xorg-lib-libXi-devel
-BuildRequires:	xorg-lib-libXxf86vm-devel
 Obsoletes:	ClanLib-TTF
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,7 +57,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 # for libclanDisplay
-Requires:	xorg-lib-libXxf86vm-devel
+Requires:	XFree86-devel
 Obsoletes:	ClanLib-TTF-devel
 
 %description devel
@@ -116,8 +115,7 @@ Group:		Development/Libraries
 Requires:	%{name}-OpenGL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
-Requires:	xorg-lib-libXi-devel
-Requires:	xorg-lib-libXxf86vm-devel
+Requires:	XFree86-devel
 
 %description OpenGL-devel
 Header files for OpenGL ClanLib library.
