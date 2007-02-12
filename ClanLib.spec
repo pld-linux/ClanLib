@@ -1,6 +1,6 @@
 Summary:	ClanLib, the platform independent game SDK
-Summary(pl):	ClanLib, niezaleøny od platformy SDK do gier
-Summary(pt_BR):	SDK Clanlib
+Summary(pl.UTF-8):   ClanLib, niezale≈ºny od platformy SDK do gier
+Summary(pt_BR.UTF-8):   SDK Clanlib
 Name:		ClanLib
 Version:	0.8.0
 Release:	1
@@ -39,21 +39,21 @@ traditional way it is done in DirectX, SDL and such. The goal is to
 avoid game developers constantly reinventing the wheel by providing
 smarter ways to eg. load surfaces.
 
-%description -l pl
-ClanLib SDK jest projektowany jako niezaleøny od platformy SDK dla
+%description -l pl.UTF-8
+ClanLib SDK jest projektowany jako niezale≈ºny od platformy SDK dla
 gier. Stosuje prosty (i zorientowany obiektowo) interfejs,
-przejrzystszy niø DirectX, SDL i inne.
+przejrzystszy ni≈º DirectX, SDL i inne.
 
-%description -l pt_BR
-A Clanlib È uma biblioteca de jogos multi-plataforma desenhada para
-facilitar o trabalho dos desenvolvedores. A idÈia principal È fornecer
-uma interface comum para os problemas cl·ssicos dos jogos (carregar
-gr·ficos por exemplo).
+%description -l pt_BR.UTF-8
+A Clanlib √© uma biblioteca de jogos multi-plataforma desenhada para
+facilitar o trabalho dos desenvolvedores. A id√©ia principal √© fornecer
+uma interface comum para os problemas cl√°ssicos dos jogos (carregar
+gr√°ficos por exemplo).
 
 %package devel
 Summary:	ClanLib development package
-Summary(pl):	Pakiet programistyczny dla ClanLib
-Summary(pt_BR):	Arquivos para desenvolvimento usando a Clanlib
+Summary(pl.UTF-8):   Pakiet programistyczny dla ClanLib
+Summary(pt_BR.UTF-8):   Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
@@ -65,17 +65,17 @@ Obsoletes:	ClanLib-TTF-devel
 This is the development add-on package that includes the header files
 needed to compile new ClanLib applications.
 
-%description devel -l pl
-Programistyczne dodatki do ClanLiba, zawieraj± pliki nag≥Ûwkowe
-potrzebne do kompilacji programÛw korzystaj±cych z ClanLib.
+%description devel -l pl.UTF-8
+Programistyczne dodatki do ClanLiba, zawierajƒÖ pliki nag≈Ç√≥wkowe
+potrzebne do kompilacji program√≥w korzystajƒÖcych z ClanLib.
 
-%description devel -l pt_BR
+%description devel -l pt_BR.UTF-8
 Arquivos que possibilitam o desenvolvimento de aplicativos utilizando
 a biblioteca Clanlib.
 
 %package static
 Summary:	ClanLib static libraries
-Summary(pl):	Statyczne biblioteki ClanLib
+Summary(pl.UTF-8):   Statyczne biblioteki ClanLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	ClanLib-TTF-static
@@ -83,35 +83,35 @@ Obsoletes:	ClanLib-TTF-static
 %description static
 This package contains static versions of ClanLib libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Ten pakiet zawiera statyczne wersje bibliotek ClanLib.
 
 %package doc
 Summary:	ClanLib reference documentation for programmers
-Summary(pl):	Dokumentacja programisty do biblioteki ClanLib
+Summary(pl.UTF-8):   Dokumentacja programisty do biblioteki ClanLib
 Group:		Documentation
 
 %description doc
 ClanLib reference documentation for programmers.
 
-%description doc -l pl
+%description doc -l pl.UTF-8
 Dokumentacja programisty do biblioteki ClanLib
 
 %package OpenGL
 Summary:	OpenGL ClanLib library
-Summary(pl):	Biblioteka OpenGL dla ClanLiba
+Summary(pl.UTF-8):   Biblioteka OpenGL dla ClanLiba
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description OpenGL
 OpenGL ClanLib library.
 
-%description OpenGL -l pl
+%description OpenGL -l pl.UTF-8
 Biblioteka OpenGL dla ClanLiba.
 
 %package OpenGL-devel
 Summary:	Header files for OpenGL ClanLib library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki OpenGL dla ClanLiba
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki OpenGL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-OpenGL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
@@ -122,36 +122,36 @@ Requires:	xorg-lib-libXxf86vm-devel
 %description OpenGL-devel
 Header files for OpenGL ClanLib library.
 
-%description OpenGL-devel -l pl
-Pliki nag≥Ûwkowe biblioteki OpenGL dla ClanLiba.
+%description OpenGL-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki OpenGL dla ClanLiba.
 
 %package OpenGL-static
 Summary:	Static OpenGL ClanLib library
-Summary(pl):	Statyczna biblioteka OpenGL dla ClanLiba
+Summary(pl.UTF-8):   Statyczna biblioteka OpenGL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-OpenGL-devel = %{version}-%{release}
 
 %description OpenGL-static
 Static OpenGL ClanLib library.
 
-%description OpenGL-static -l pl
+%description OpenGL-static -l pl.UTF-8
 Statyczna biblioteka OpenGL dla ClanLiba.
 
 %package MikMod
 Summary:	MikMod ClanLib library
-Summary(pl):	Biblioteka MikMod dla ClanLiba
+Summary(pl.UTF-8):   Biblioteka MikMod dla ClanLiba
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description MikMod
 MikMod ClanLib library.
 
-%description MikMod -l pl
+%description MikMod -l pl.UTF-8
 Biblioteka MikMod dla ClanLiba.
 
 %package MikMod-devel
 Summary:	Header files for MikMod ClanLib library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki MikMod dla ClanLiba
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki MikMod dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-MikMod = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
@@ -160,36 +160,36 @@ Requires:	libmikmod-devel
 %description MikMod-devel
 Header files for MikMod ClanLib library.
 
-%description MikMod-devel -l pl
-Pliki nag≥Ûwkowe biblioteki MikMod dla ClanLiba.
+%description MikMod-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki MikMod dla ClanLiba.
 
 %package MikMod-static
 Summary:	Static MikMod ClanLib library
-Summary(pl):	Statyczna biblioteka MikMod dla ClanLiba
+Summary(pl.UTF-8):   Statyczna biblioteka MikMod dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-MikMod-devel = %{version}-%{release}
 
 %description MikMod-static
 Static MikMod ClanLib library.
 
-%description MikMod-static -l pl
+%description MikMod-static -l pl.UTF-8
 Statyczna biblioteka MikMod dla ClanLiba.
 
 %package SDL
 Summary:	SDL ClanLib library
-Summary(pl):	Biblioteka SDL dla ClanLiba
+Summary(pl.UTF-8):   Biblioteka SDL dla ClanLiba
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description SDL
 SDL ClanLib library.
 
-%description SDL -l pl
+%description SDL -l pl.UTF-8
 Biblioteka SDL dla ClanLiba.
 
 %package SDL-devel
 Summary:	Header files for SDL ClanLib library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki SDL dla ClanLiba
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki SDL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-SDL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
@@ -199,36 +199,36 @@ Requires:	SDL_gfx-devel >= 1.2.0
 %description SDL-devel
 Header files for SDL ClanLib library.
 
-%description SDL-devel -l pl
-Pliki nag≥Ûwkowe biblioteki SDL dla ClanLiba.
+%description SDL-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki SDL dla ClanLiba.
 
 %package SDL-static
 Summary:	Static SDL ClanLib library
-Summary(pl):	Statyczna biblioteka SDL dla ClanLiba
+Summary(pl.UTF-8):   Statyczna biblioteka SDL dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-SDL-devel = %{version}-%{release}
 
 %description SDL-static
 Static SDL ClanLib library.
 
-%description SDL-static -l pl
+%description SDL-static -l pl.UTF-8
 Statyczna biblioteka SDL dla ClanLiba.
 
 %package Vorbis
 Summary:	Vorbis ClanLib library
-Summary(pl):	Biblioteka Vorbis dla ClanLiba
+Summary(pl.UTF-8):   Biblioteka Vorbis dla ClanLiba
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description Vorbis
 Vorbis ClanLib library.
 
-%description Vorbis -l pl
+%description Vorbis -l pl.UTF-8
 Biblioteka Vorbis dla ClanLiba.
 
 %package Vorbis-devel
 Summary:	Header files for Vorbis ClanLib library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki Vorbis dla ClanLiba
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki Vorbis dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-Vorbis = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
@@ -237,19 +237,19 @@ Requires:	libvorbis-devel
 %description Vorbis-devel
 Header files for Vorbis ClanLib library.
 
-%description Vorbis-devel -l pl
-Pliki nag≥Ûwkowe biblioteki Vorbis dla ClanLiba.
+%description Vorbis-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki Vorbis dla ClanLiba.
 
 %package Vorbis-static
 Summary:	Static Vorbis ClanLib library
-Summary(pl):	Statyczna biblioteka Vorbis dla ClanLiba
+Summary(pl.UTF-8):   Statyczna biblioteka Vorbis dla ClanLiba
 Group:		Development/Libraries
 Requires:	%{name}-Vorbis-devel = %{version}-%{release}
 
 %description Vorbis-static
 Static Vorbis ClanLib library.
 
-%description Vorbis-static -l pl
+%description Vorbis-static -l pl.UTF-8
 Statyczna biblioteka Vorbis dla ClanLiba.
 
 %prep
