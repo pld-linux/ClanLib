@@ -1,0 +1,19 @@
+- added using CVS keywords in %changelog (for automating them).
+
+* Wed Jul 07 1999 Jan Rękorajski <baggins@pld.org.pl>
+  [0.1.15-1]
+- commented out static subpackage (don't know how to make it)
+
+* Mon Jun 07 1999 Jan Rękorajski <baggins@pld.org.pl>
+  [0.1.14-3]
+- fixed install
+
+* Tue Apr 20 1999 Tomasz Kłoczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.1.14-2]
+- added BuildPrereq (libpng-devel, libz-devel, Hermes-devel).
+- added -q %setup patameter,
+- added static subpackage.
+
+* Mon Apr 19 1999 Konrad Stepień <kornad@interdata.com.pl>
+  [0.1.14-1]
+- initial version
