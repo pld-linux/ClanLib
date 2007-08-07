@@ -257,6 +257,7 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 %patch0 -p1
 
 rm -rf autom4te.cache
+echo "dnl" >> acinclude.m4
 
 %build
 # note: rtti is needed --- ClanLib uses exceptions!
