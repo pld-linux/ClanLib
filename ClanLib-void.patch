@@ -1,0 +1,11 @@
+--- ClanLib-0.8.0/Sources/API/GL/opengl_wrap.h~	2005-10-25 12:39:25.000000000 +0200
++++ ClanLib-0.8.0/Sources/API/GL/opengl_wrap.h	2007-09-05 19:30:58.000000000 +0200
+@@ -2530,7 +2530,7 @@
+ 	typedef CLuint (CL_GLFUNC *ptr_glCreateShaderObjectARB )(CLenum shaderType);
+ 	typedef CLvoid (CL_GLFUNC *ptr_glShaderSourceARB)(CLuint shaderObj, CLsizei count, const CLchar* *string, const CLint *length);
+ 	typedef CLvoid (CL_GLFUNC *ptr_glCompileShaderARB)(CLuint shaderObj);
+-	typedef CLuint (CL_GLFUNC *ptr_glCreateProgramObjectARB)(CLvoid);
++	typedef CLuint (CL_GLFUNC *ptr_glCreateProgramObjectARB)(void);
+ 	typedef CLvoid (CL_GLFUNC *ptr_glAttachObjectARB)(CLuint containerObj, CLuint attachedObj);
+ 	typedef CLvoid (CL_GLFUNC *ptr_glLinkProgramARB)(CLuint programObj);
+ 	typedef CLvoid (CL_GLFUNC *ptr_glUseProgramObjectARB)(CLuint programObj);
