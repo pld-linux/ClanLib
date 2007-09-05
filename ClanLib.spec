@@ -3,13 +3,14 @@ Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
 Version:	0.8.0
-Release:	1
+Release:	2
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
 Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}.tgz
 # Source0-md5:	3e183a801a31f646b012db2d82f97ff3
 Patch0:		%{name}-link.patch
+Patch1:		%{name}-void.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL >= 1.2.0
@@ -255,6 +256,7 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 rm -rf autom4te.cache
 echo "dnl" >> acinclude.m4
