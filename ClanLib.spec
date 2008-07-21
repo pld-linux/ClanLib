@@ -2,19 +2,19 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
-Version:	0.8.0
-Release:	2
+Version:	0.8.1
+Release:	1
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
 Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}.tgz
-# Source0-md5:	3e183a801a31f646b012db2d82f97ff3
+# Source0-md5:	24e86202eb6d702f788ff16a2718aa97
 Patch0:		%{name}-link.patch
-Patch1:		%{name}-void.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL >= 1.2.0
 BuildRequires:	SDL_gfx-devel >= 1.2.0
+BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
 BuildRequires:	libjpeg-devel
@@ -256,7 +256,6 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 rm -rf autom4te.cache
 echo "dnl" >> acinclude.m4
@@ -310,14 +309,22 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING CREDITS NEWS README README.sdl TODO-RSN
-%attr(755,root,root) %{_libdir}/libclanApp-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanCore-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanDisplay-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanGUI-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanGUIStyleSilver-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanNetwork-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanSignals-0.8.so.*.*
-%attr(755,root,root) %{_libdir}/libclanSound-0.8.so.*.*
+%attr(755,root,root) %{_libdir}/libclanApp-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanApp-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanCore-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanCore-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanDisplay-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanDisplay-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanGUI-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGUI-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanGUIStyleSilver-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGUIStyleSilver-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanNetwork-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanNetwork-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanSignals-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSignals-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanSound-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSound-0.8.so.1
 
 %files devel
 %defattr(644,root,root,755)
@@ -380,7 +387,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files OpenGL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanGL-0.8.so.*.*
+%attr(755,root,root) %{_libdir}/libclanGL-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGL-0.8.so.1
 
 %files OpenGL-devel
 %defattr(644,root,root,755)
@@ -396,7 +404,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files MikMod
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanMikMod-0.8.so.*.*
+%attr(755,root,root) %{_libdir}/libclanMikMod-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanMikMod-0.8.so.1
 
 %files MikMod-devel
 %defattr(644,root,root,755)
@@ -412,7 +421,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files SDL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanSDL-0.8.so.*.*
+%attr(755,root,root) %{_libdir}/libclanSDL-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSDL-0.8.so.1
 
 %files SDL-devel
 %defattr(644,root,root,755)
@@ -428,7 +438,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Vorbis
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanVorbis-0.8.so.*.*
+%attr(755,root,root) %{_libdir}/libclanVorbis-0.8.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanVorbis-0.8.so.1
 
 %files Vorbis-devel
 %defattr(644,root,root,755)
