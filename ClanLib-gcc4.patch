@@ -1,0 +1,12 @@
+diff -urN ClanLib-0.8.1/Sources/GL/opengl.cpp ClanLib-0.8.1.new/Sources/GL/opengl.cpp
+--- ClanLib-0.8.1/Sources/GL/opengl.cpp	2006-10-27 03:55:01.000000000 +0200
++++ ClanLib-0.8.1.new/Sources/GL/opengl.cpp	2008-11-10 16:20:18.000000000 +0100
+@@ -27,6 +27,8 @@
+ **    (if your name is missing here, please add it)
+ */
+ 
++#include <cstring>
++
+ #include "Display/display_precomp.h"
+ #include "API/GL/opengl.h"
+ #include "API/GL/opengl_wrap.h"
