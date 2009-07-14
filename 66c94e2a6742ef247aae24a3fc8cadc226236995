@@ -1,0 +1,2 @@
+- updated to %{cvmajor}.0-RC2
+- switched to modular xorg, updated link patch to kill unnecessary linking
