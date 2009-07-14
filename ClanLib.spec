@@ -1,16 +1,16 @@
+%define	cvmajor	2.0
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
-Version:	0.8.1
-Release:	5
+Version:	2.0.2
+Release:	1
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
-Source0:	http://www.clanlib.org/download/releases-0.8/%{name}-%{version}.tgz
-# Source0-md5:	24e86202eb6d702f788ff16a2718aa97
-Patch0:		%{name}-link.patch
-Patch1:		%{name}-gcc4.patch
+Source0:	http://www.clanlib.org/download/releases-2.0/%{name}-%{version}.tgz
+# Source0-md5:	81a9e30e035fbb73a698813f67289505
+Patch0:		%{name}-build.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	SDL >= 1.2.0
@@ -20,13 +20,14 @@ BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libpng-devel >= 1.%{cvmajor}
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
 BuildRequires:	libxslt-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+BuildRequires:	sqlite3-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
 Obsoletes:	ClanLib-TTF
@@ -257,7 +258,6 @@ Statyczna biblioteka Vorbis dla ClanLiba.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 rm -rf autom4te.cache
 echo "dnl" >> acinclude.m4
@@ -271,19 +271,23 @@ echo "dnl" >> acinclude.m4
 %configure \
 	--enable-static \
 	--enable-shared \
-	--%{?debug:en}%{!?debug:dis}able-debug \
+	--enable-docs \
 %ifarch %{ix86}
 	--enable-asm386 \
 %endif
-	--enable-dyn
+	--%{?debug:en}%{!?debug:dis}able-debug
 # directfb disabled now
 
 %{__make}
 
+(cd Documentation/Utilities/ReferenceDocs; ln -s ../../../Sources/API ClanLib)
+export PKG_CONFIG_PATH=$(pwd)/Setup/pkgconfig
+%{__make} html
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} install install-html \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # missing from make install
@@ -310,95 +314,114 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING CREDITS NEWS README README.sdl TODO-RSN
-%attr(755,root,root) %{_libdir}/libclanApp-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanApp-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanCore-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanCore-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanDisplay-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanDisplay-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanGUI-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanGUI-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanGUIStyleSilver-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanGUIStyleSilver-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanNetwork-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanNetwork-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanSignals-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanSignals-0.8.so.1
-%attr(755,root,root) %{_libdir}/libclanSound-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanSound-0.8.so.1
+%doc COPYING CREDITS README
+%attr(755,root,root) %{_libdir}/libclanApp-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanApp-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanCore-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanCore-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanDatabase-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanDatabase-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanDisplay-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanDisplay-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanGDI-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGDI-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanGUI-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGUI-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanNetwork-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanNetwork-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanRegExp-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanRegExp-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanSound-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSound-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclanSqlite-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSqlite-%{cvmajor}.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%doc README.kdevelop README.upgrade
+%doc README.kdevelop UPGRADE.txt
 %attr(755,root,root) %{_libdir}/libclanApp.so
 %attr(755,root,root) %{_libdir}/libclanCore.so
+%attr(755,root,root) %{_libdir}/libclanDatabase.so
 %attr(755,root,root) %{_libdir}/libclanDisplay.so
+%attr(755,root,root) %{_libdir}/libclanGDI.so
 %attr(755,root,root) %{_libdir}/libclanGUI.so
-%attr(755,root,root) %{_libdir}/libclanGUIStyleSilver.so
 %attr(755,root,root) %{_libdir}/libclanNetwork.so
-%attr(755,root,root) %{_libdir}/libclanSignals.so
+%attr(755,root,root) %{_libdir}/libclanRegExp.so
 %attr(755,root,root) %{_libdir}/libclanSound.so
+%attr(755,root,root) %{_libdir}/libclanSqlite.so
 %{_libdir}/libclanApp.la
 %{_libdir}/libclanCore.la
+%{_libdir}/libclanDatabase.la
 %{_libdir}/libclanDisplay.la
+%{_libdir}/libclanGDI.la
 %{_libdir}/libclanGUI.la
-%{_libdir}/libclanGUIStyleSilver.la
 %{_libdir}/libclanNetwork.la
-%{_libdir}/libclanSignals.la
+%{_libdir}/libclanRegExp.la
 %{_libdir}/libclanSound.la
-%dir %{_includedir}/ClanLib-0.8
-%dir %{_includedir}/ClanLib-0.8/ClanLib
-%{_includedir}/ClanLib-0.8/ClanLib/Application
-%{_includedir}/ClanLib-0.8/ClanLib/application.h
-%{_includedir}/ClanLib-0.8/ClanLib/Core
-%{_includedir}/ClanLib-0.8/ClanLib/core.h
-%{_includedir}/ClanLib-0.8/ClanLib/Display
-%{_includedir}/ClanLib-0.8/ClanLib/display.h
-%{_includedir}/ClanLib-0.8/ClanLib/GUI*
-%{_includedir}/ClanLib-0.8/ClanLib/gui*.h
-%{_includedir}/ClanLib-0.8/ClanLib/Network
-%{_includedir}/ClanLib-0.8/ClanLib/network.h
-%{_includedir}/ClanLib-0.8/ClanLib/Signals
-%{_includedir}/ClanLib-0.8/ClanLib/signals.h
-%{_includedir}/ClanLib-0.8/ClanLib/Sound
-%{_includedir}/ClanLib-0.8/ClanLib/sound.h
+%{_libdir}/libclanSqlite.la
+%dir %{_includedir}/ClanLib-%{cvmajor}
+%dir %{_includedir}/ClanLib-%{cvmajor}/ClanLib
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/App
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/application.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Core
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/core.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Database
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/database.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Display
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/display.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/GDI
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/gdi.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/GUI*
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/gui*.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Network
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/network.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/RegExp
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/regexp.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sound
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/sound.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sqlite
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/sqlite.h
 %{_aclocaldir}/*.m4
-%{_pkgconfigdir}/clanApp-0.8.pc
-%{_pkgconfigdir}/clanCore-0.8.pc
-%{_pkgconfigdir}/clanDisplay-0.8.pc
-%{_pkgconfigdir}/clanGUI*-0.8.pc
-%{_pkgconfigdir}/clanNetwork-0.8.pc
-%{_pkgconfigdir}/clanSignals-0.8.pc
-%{_pkgconfigdir}/clanSound-0.8.pc
+%{_pkgconfigdir}/clanApp-%{cvmajor}.pc
+%{_pkgconfigdir}/clanCore-%{cvmajor}.pc
+%{_pkgconfigdir}/clanDatabase-%{cvmajor}.pc
+%{_pkgconfigdir}/clanDisplay-%{cvmajor}.pc
+%{_pkgconfigdir}/clanGDI-%{cvmajor}.pc
+%{_pkgconfigdir}/clanGUI*-%{cvmajor}.pc
+%{_pkgconfigdir}/clanNetwork-%{cvmajor}.pc
+%{_pkgconfigdir}/clanRegExp-%{cvmajor}.pc
+%{_pkgconfigdir}/clanSound-%{cvmajor}.pc
+%{_pkgconfigdir}/clanSqlite-%{cvmajor}.pc
 
 %files doc
 %defattr(644,root,root,755)
-%{_docdir}/clanlib
+%{_docdir}/clanlib-*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libclanApp.a
 %{_libdir}/libclanCore.a
+%{_libdir}/libclanDatabase.a
 %{_libdir}/libclanDisplay.a
+%{_libdir}/libclanGDI.a
 %{_libdir}/libclanGUI.a
-%{_libdir}/libclanGUIStyleSilver.a
 %{_libdir}/libclanNetwork.a
-%{_libdir}/libclanSignals.a
+%{_libdir}/libclanRegExp.a
 %{_libdir}/libclanSound.a
+%{_libdir}/libclanSqlite.a
 
 %files OpenGL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanGL-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanGL-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanGL-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanGL-%{cvmajor}.so.1
 
 %files OpenGL-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanGL.so
 %{_libdir}/libclanGL.la
-%{_includedir}/ClanLib-0.8/ClanLib/GL
-%{_includedir}/ClanLib-0.8/ClanLib/gl.h
-%{_pkgconfigdir}/clanGL-0.8.pc
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/GL
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/gl.h
+%{_pkgconfigdir}/clanGL-%{cvmajor}.pc
 
 %files OpenGL-static
 %defattr(644,root,root,755)
@@ -406,16 +429,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files MikMod
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanMikMod-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanMikMod-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanMikMod-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanMikMod-%{cvmajor}.so.1
 
 %files MikMod-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanMikMod.so
 %{_libdir}/libclanMikMod.la
-%{_includedir}/ClanLib-0.8/ClanLib/MikMod
-%{_includedir}/ClanLib-0.8/ClanLib/mikmod.h
-%{_pkgconfigdir}/clanMikMod-0.8.pc
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/MikMod
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/mikmod.h
+%{_pkgconfigdir}/clanMikMod-%{cvmajor}.pc
 
 %files MikMod-static
 %defattr(644,root,root,755)
@@ -423,16 +446,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files SDL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanSDL-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanSDL-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanSDL-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanSDL-%{cvmajor}.so.1
 
 %files SDL-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanSDL.so
 %{_libdir}/libclanSDL.la
-%{_includedir}/ClanLib-0.8/ClanLib/SDL
-%{_includedir}/ClanLib-0.8/ClanLib/sdl.h
-%{_pkgconfigdir}/clanSDL-0.8.pc
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/SDL
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/sdl.h
+%{_pkgconfigdir}/clanSDL-%{cvmajor}.pc
 
 %files SDL-static
 %defattr(644,root,root,755)
@@ -440,16 +463,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files Vorbis
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclanVorbis-0.8.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclanVorbis-0.8.so.1
+%attr(755,root,root) %{_libdir}/libclanVorbis-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclanVorbis-%{cvmajor}.so.1
 
 %files Vorbis-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclanVorbis.so
 %{_libdir}/libclanVorbis.la
-%{_includedir}/ClanLib-0.8/ClanLib/Vorbis
-%{_includedir}/ClanLib-0.8/ClanLib/vorbis.h
-%{_pkgconfigdir}/clanVorbis-0.8.pc
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/Vorbis
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/vorbis.h
+%{_pkgconfigdir}/clanVorbis-%{cvmajor}.pc
 
 %files Vorbis-static
 %defattr(644,root,root,755)
