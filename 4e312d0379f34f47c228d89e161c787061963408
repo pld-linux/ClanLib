@@ -1,0 +1,3 @@
+- updated to final %{cvmajor}.0, removed obsolete gcc4 patch
+- killed /usr/X11R6 from link patch
+- license is not LGPL now, but something BSD-like
