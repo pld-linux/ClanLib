@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
 Version:	2.1.0
-Release:	1
+Release:	2
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
@@ -16,8 +16,6 @@ Source0:	http://www.clanlib.org/download/releases-2.0/%{name}-%{version}.tgz
 Patch0:		%{name}-build.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
-BuildRequires:	SDL >= 1.2.0
-BuildRequires:	SDL_gfx-devel >= 1.2.0
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
@@ -270,9 +268,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	MikMod -p /sbin/ldconfig
 %postun	MikMod -p /sbin/ldconfig
-
-%post	SDL -p /sbin/ldconfig
-%postun	SDL -p /sbin/ldconfig
 
 %post	Vorbis -p /sbin/ldconfig
 %postun	Vorbis -p /sbin/ldconfig
