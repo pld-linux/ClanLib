@@ -1,80 +1,16 @@
---- ClanLib-2.0.2/Sources/Display/X11/x11_window.cpp~	2009-05-15 10:13:14.000000000 +0200
-+++ ClanLib-2.0.2/Sources/Display/X11/x11_window.cpp	2009-07-14 08:49:17.643976647 +0200
-@@ -53,6 +53,8 @@
- #include "timer_provider_x11.h"
- #include <X11/Xatom.h>
- 
-+#include <cstdio>
-+
- CL_X11Window::CL_X11Window(CL_DisplayMessageQueue_X11 *message_queue)
- : window(0), window_last_focus(0), cmap(0), allow_resize(false), bpp(0), message_queue(message_queue), fullscreen(false),
-   disp(0), system_cursor(0), hidden_cursor(0), cursor_bitmap(0), 
---- ClanLib-2.0.2/Sources/Display/X11/input_device_provider_x11keyboard.cpp~	2009-05-14 12:07:59.000000000 +0200
-+++ ClanLib-2.0.2/Sources/Display/X11/input_device_provider_x11keyboard.cpp	2009-07-14 08:50:11.947877097 +0200
-@@ -34,6 +34,8 @@
- #include "API/Core/Text/string_help.h"
- #include "x11_window.h"
- 
-+#include <cstdio>
-+
- /////////////////////////////////////////////////////////////////////////////
- // CL_InputDeviceProvider_X11Keyboard construction:
- 
---- ClanLib-2.0.2/Sources/GL/GLX/opengl_window_provider_glx.cpp~	2009-05-14 17:13:42.000000000 +0200
-+++ ClanLib-2.0.2/Sources/GL/GLX/opengl_window_provider_glx.cpp	2009-07-14 08:52:13.170573614 +0200
-@@ -49,6 +49,8 @@
- #include "../opengl_target_provider.h"
- #include "Display/X11/timer_provider_x11.h"
- 
-+#include <cstdio>
-+
- namespace
- {
- 	class RenderWindowProvider_GLX: public CL_RenderWindowProvider
---- ClanLib-2.0.2/Sources/Core/Text/string_help.cpp~	2009-03-16 10:34:32.000000000 +0100
-+++ ClanLib-2.0.2/Sources/Core/Text/string_help.cpp	2009-07-14 08:56:18.465131510 +0200
-@@ -35,6 +35,7 @@
- #include <wctype.h>
- #include <string.h>
- #include <stdlib.h>
-+#include <cstdio>
- #else
- #include <string.h>
- #include <tchar.h>
---- ClanLib-2.0.2/Sources/API/Makefile.am~	2009-05-06 18:09:22.000000000 +0200
-+++ ClanLib-2.0.2/Sources/API/Makefile.am	2009-07-14 09:01:28.314442596 +0200
-@@ -322,7 +322,6 @@
- 	Display/2D/sprite_description.h \
- 	Display/2D/subtexture.h \
- 	Display/2D/color.h \
--	Display/2D/image.h \
- 	Display/2D/span_layout.h \
- 	Display/Collision/outline_accuracy.h \
- 	Display/Collision/outline_provider_bitmap.h \
---- ClanLib-2.0.2/Examples/Makefile.conf.in~	2009-07-14 12:28:45.199275223 +0200
-+++ ClanLib-2.0.2/Examples/Makefile.conf.in	2009-07-14 12:28:58.112848194 +0200
+--- ClanLib-2.1.0/Examples/Makefile.conf.in~	2009-04-28 14:42:43.000000000 +0000
++++ ClanLib-2.1.0/Examples/Makefile.conf.in	2009-10-21 12:03:34.000000000 +0000
 @@ -5,7 +5,7 @@
  #
  
  PACKAGES = $(patsubst %,%-@LT_RELEASE@,$(LIBS))
 -CXXFLAGS += `pkg-config --cflags $(PACKAGES)` -pthread
-+CXXFLAGS += -I. `pkg-config --cflags $(PACKAGES)` -pthread
++CXXFLAGS += -I. -L../../../Sources/Core/.libs `pkg-config --cflags $(PACKAGES)` -pthread
  
  #EXAMPLE_BIN contains list of example binaries to build
  
---- ClanLib-2.0.2/Documentation/Utilities/ReferenceDocs/Makefile~	2009-03-27 11:19:52.000000000 +0100
-+++ ClanLib-2.0.2/Documentation/Utilities/ReferenceDocs/Makefile	2009-07-14 12:39:30.959210323 +0200
-@@ -1,7 +1,7 @@
- EXAMPLE_BIN=ReferenceDocs
- OBJF = reference_docs.o reference_all_classes.o reference_class.o reference_define.o reference_enum.o reference_function.o reference_grouped_classes.o reference_index.o reference_typedef.o
- LIBS=clanCore
--EXTRA_LIBS=-lpthread
-+EXTRA_LIBS=-lpthread -L../../../Sources/Core/.libs/
- 
- include ../../../Examples/Makefile.conf
- 
---- ClanLib-2.0.2/Documentation/Reference/Makefile.am.org	2009-07-14 13:03:55.506979144 +0200
-+++ ClanLib-2.0.2/Documentation/Reference/Makefile.am	2009-07-14 13:03:03.129200101 +0200
+--- ClanLib-2.1.0/Documentation/Reference/Makefile.am~	2009-03-27 10:25:47.000000000 +0000
++++ ClanLib-2.1.0/Documentation/Reference/Makefile.am	2009-10-21 12:04:46.000000000 +0000
 @@ -11,7 +11,7 @@
  	mkdir reftest
  	doxygen ./clanlib.doxygen
