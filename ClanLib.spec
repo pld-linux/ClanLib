@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
+Obsoletes:	ClanLib-SDL
 Obsoletes:	ClanLib-TTF
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,6 +65,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
 # for libclanDisplay
 Requires:	xorg-lib-libXxf86vm-devel
+Obsoletes:	ClanLib-SDL-devel
 Obsoletes:	ClanLib-TTF-devel
 
 %description devel
@@ -83,6 +85,7 @@ Summary:	ClanLib static libraries
 Summary(pl.UTF-8):	Statyczne biblioteki ClanLib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	ClanLib-SDL-static
 Obsoletes:	ClanLib-TTF-static
 
 %description static
