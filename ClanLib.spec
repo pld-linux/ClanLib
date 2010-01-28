@@ -20,6 +20,8 @@ BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
 BuildRequires:	doxygen
+BuildRequires:	fontconfig-devel
+BuildRequires:	freetype-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.%{cvmajor}
@@ -27,6 +29,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
 BuildRequires:	libxslt-progs
+BuildRequires:	pcre-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
