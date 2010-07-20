@@ -1,6 +1,3 @@
-#
-# TODO: include GL1 stuff
-#
 %define	cvmajor	2.1
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
@@ -149,6 +146,46 @@ Static OpenGL ClanLib library.
 %description OpenGL-static -l pl.UTF-8
 Statyczna biblioteka OpenGL dla ClanLiba.
 
+%package OpenGL1
+Summary:	OpenGL1 ClanLib library
+Summary(pl.UTF-8):	Biblioteka OpenGL1 dla ClanLiba
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description OpenGL1
+OpenGL1 ClanLib library.
+
+%description OpenGL1 -l pl.UTF-8
+Biblioteka OpenGL1 dla ClanLiba.
+
+%package OpenGL1-devel
+Summary:	Header files for OpenGL1 ClanLib library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki OpenGL1 dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-OpenGL1 = %{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	OpenGL1-GLU-devel
+Requires:	xorg-lib-libXi-devel
+Requires:	xorg-lib-libXxf86vm-devel
+
+%description OpenGL1-devel
+Header files for OpenGL1 ClanLib library.
+
+%description OpenGL1-devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki OpenGL1 dla ClanLiba.
+
+%package OpenGL1-static
+Summary:	Static OpenGL1 ClanLib library
+Summary(pl.UTF-8):	Statyczna biblioteka OpenGL1 dla ClanLiba
+Group:		Development/Libraries
+Requires:	%{name}-OpenGL1-devel = %{version}-%{release}
+
+%description OpenGL1-static
+Static OpenGL1 ClanLib library.
+
+%description OpenGL1-static -l pl.UTF-8
+Statyczna biblioteka OpenGL1 dla ClanLiba.
+
 %package MikMod
 Summary:	MikMod ClanLib library
 Summary(pl.UTF-8):	Biblioteka MikMod dla ClanLiba
@@ -273,6 +310,9 @@ rm -rf $RPM_BUILD_ROOT
 %post	OpenGL -p /sbin/ldconfig
 %postun	OpenGL -p /sbin/ldconfig
 
+%post   OpenGL1 -p /sbin/ldconfig
+%postun OpenGL1 -p /sbin/ldconfig
+
 %post	MikMod -p /sbin/ldconfig
 %postun	MikMod -p /sbin/ldconfig
 
@@ -393,6 +433,23 @@ rm -rf $RPM_BUILD_ROOT
 %files OpenGL-static
 %defattr(644,root,root,755)
 %{_libdir}/libclan21GL.a
+
+%files OpenGL1
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclan21GL1-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan21GL1-%{cvmajor}.so.1
+
+%files OpenGL1-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclan21GL1.so
+%{_libdir}/libclan21GL1.la
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/GL1
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/gl1.h
+%{_pkgconfigdir}/clanGL1-%{cvmajor}.pc
+
+%files OpenGL1-static
+%defattr(644,root,root,755)
+%{_libdir}/libclan21GL1.a
 
 %files MikMod
 %defattr(644,root,root,755)
