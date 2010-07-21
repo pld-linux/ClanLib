@@ -12,7 +12,6 @@ Source0:	http://www.clanlib.org/download/releases-2.0/%{name}-%{version}.tgz
 # Source0-md5:	30b519248bcecb486632d59050797157
 Patch0:		%{name}-build.patch
 URL:		http://www.clanlib.org/
-BuildRequires:	ClanLib-devel
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	alsa-lib-devel
 BuildRequires:	autoconf >= 2.59-9
@@ -285,6 +284,7 @@ echo "dnl" >> acinclude.m4
 	--%{?debug:en}%{!?debug:dis}able-debug
 # directfb disabled now
 
+export PKG_CONFIG_PATH=$(pwd)/Setup/pkgconfig
 %{__make}
 
 (cd Documentation/Utilities/ReferenceDocs; ln -s ../../../Sources/API ClanLib)
