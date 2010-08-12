@@ -278,9 +278,6 @@ echo "dnl" >> acinclude.m4
 	--enable-static \
 	--enable-shared \
 	--enable-docs \
-%ifarch %{ix86}
-	--enable-asm386 \
-%endif
 	--%{?debug:en}%{!?debug:dis}able-debug
 # directfb disabled now
 
@@ -325,19 +322,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclan22App-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22App-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Core-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan22CSSLayout-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan22CSSLayout-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Core-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Database-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Database-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Display-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Display-%{cvmajor}.so.1
-#%%attr(755,root,root) %{_libdir}/libclan22GDI-%{cvmajor}.so.*.*.*
-#%%attr(755,root,root) %ghost %{_libdir}/libclan22GDI-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22GUI-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22GUI-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Network-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Network-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22RegExp-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22RegExp-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan22SWRender-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan22SWRender-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Sound-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Sound-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Sqlite-%{cvmajor}.so.*.*.*
@@ -346,56 +345,61 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclan22App.so
+%attr(755,root,root) %{_libdir}/libclan22CSSLayout.so
 %attr(755,root,root) %{_libdir}/libclan22Core.so
 %attr(755,root,root) %{_libdir}/libclan22Database.so
 %attr(755,root,root) %{_libdir}/libclan22Display.so
-#%%attr(755,root,root) %{_libdir}/libclan22GDI.so
 %attr(755,root,root) %{_libdir}/libclan22GUI.so
 %attr(755,root,root) %{_libdir}/libclan22Network.so
 %attr(755,root,root) %{_libdir}/libclan22RegExp.so
+%attr(755,root,root) %{_libdir}/libclan22SWRender.so
 %attr(755,root,root) %{_libdir}/libclan22Sound.so
 %attr(755,root,root) %{_libdir}/libclan22Sqlite.so
 %{_libdir}/libclan22App.la
+%{_libdir}/libclan22CSSLayout.la
 %{_libdir}/libclan22Core.la
 %{_libdir}/libclan22Database.la
 %{_libdir}/libclan22Display.la
-#%%{_libdir}/libclan22GDI.la
 %{_libdir}/libclan22GUI.la
 %{_libdir}/libclan22Network.la
 %{_libdir}/libclan22RegExp.la
+%{_libdir}/libclan22SWRender.la
 %{_libdir}/libclan22Sound.la
 %{_libdir}/libclan22Sqlite.la
 %dir %{_includedir}/ClanLib-%{cvmajor}
 %dir %{_includedir}/ClanLib-%{cvmajor}/ClanLib
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/App
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/application.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/CSSLayout
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/csslayout.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Core
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/core.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Database
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/database.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Display
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/display.h
-#%%{_includedir}/ClanLib-%{cvmajor}/ClanLib/GDI
-#%%{_includedir}/ClanLib-%{cvmajor}/ClanLib/gdi.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/GUI*
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/gui*.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Network
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/network.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/RegExp
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/regexp.h
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/SWRender
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/swrender.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sound
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/sound.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sqlite
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/sqlite.h
 %{_aclocaldir}/*.m4
 %{_pkgconfigdir}/clanApp-%{cvmajor}.pc
+%{_pkgconfigdir}/clanCSSLayout-%{cvmajor}.pc
 %{_pkgconfigdir}/clanCore-%{cvmajor}.pc
 %{_pkgconfigdir}/clanDatabase-%{cvmajor}.pc
 %{_pkgconfigdir}/clanDisplay-%{cvmajor}.pc
-#%%{_pkgconfigdir}/clanGDI-%{cvmajor}.pc
 %{_pkgconfigdir}/clanGUI*-%{cvmajor}.pc
 %{_pkgconfigdir}/clanNetwork-%{cvmajor}.pc
 %{_pkgconfigdir}/clanRegExp-%{cvmajor}.pc
+%{_pkgconfigdir}/clanSWRender-%{cvmajor}.pc
 %{_pkgconfigdir}/clanSound-%{cvmajor}.pc
 %{_pkgconfigdir}/clanSqlite-%{cvmajor}.pc
 
@@ -406,13 +410,14 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libclan22App.a
+%{_libdir}/libclan22CSSLayout.a
 %{_libdir}/libclan22Core.a
 %{_libdir}/libclan22Database.a
 %{_libdir}/libclan22Display.a
-#%%{_libdir}/libclan22GDI.a
 %{_libdir}/libclan22GUI.a
 %{_libdir}/libclan22Network.a
 %{_libdir}/libclan22RegExp.a
+%{_libdir}/libclan22SWRender.a
 %{_libdir}/libclan22Sound.a
 %{_libdir}/libclan22Sqlite.a
 
