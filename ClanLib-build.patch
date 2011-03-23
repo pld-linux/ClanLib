@@ -1,14 +1,14 @@
---- ClanLib-2.1.0/Examples/Makefile.conf.in~	2009-04-28 14:42:43.000000000 +0000
-+++ ClanLib-2.1.0/Examples/Makefile.conf.in	2009-10-21 12:03:34.000000000 +0000
-@@ -5,7 +5,7 @@
- #
- 
+--- ClanLib-2.2.7/Examples/Makefile.conf.in~    2011-01-27 09:46:22.000000000 +0100
++++ ClanLib-2.2.7/Examples/Makefile.conf.in     2011-03-23 11:30:20.041337929 +0100
+@@ -6,7 +6,7 @@
+
  PACKAGES = $(patsubst %,%-@LT_RELEASE@,$(LIBS))
--CXXFLAGS += `pkg-config --cflags $(PACKAGES)` -pthread
-+CXXFLAGS += -I. -L../../../Sources/Core/.libs `pkg-config --cflags $(PACKAGES)` -pthread
- 
+ @WIN32_TRUE@ CXXFLAGS += `pkg-config --cflags $(PACKAGES)` -mthreads
+-@WIN32_FALSE@CXXFLAGS += `pkg-config --cflags $(PACKAGES)` -pthread
++@WIN32_FALSE@CXXFLAGS += -I. -L../../../Sources/Core/.libs `pkg-config --cflags $(PACKAGES)` -pthread
+
  #EXAMPLE_BIN contains list of example binaries to build
- 
+
 --- ClanLib-2.1.0/Documentation/Reference/Makefile.am~	2009-03-27 10:25:47.000000000 +0000
 +++ ClanLib-2.1.0/Documentation/Reference/Makefile.am	2009-10-21 12:04:46.000000000 +0000
 @@ -11,7 +11,7 @@
