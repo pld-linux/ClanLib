@@ -21,6 +21,7 @@ Group:		Libraries
 Source0:	http://www.clanlib.org/download/releases-2.0/%{name}-%{version}.tgz
 # Source0-md5:	a6207ce394e60151c61aa5ad99de336d
 Patch0:		%{name}-build.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	alsa-lib-devel
@@ -315,6 +316,7 @@ Dokumentacja programisty do biblioteki ClanLib
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %{__rm} -r autom4te.cache
 
