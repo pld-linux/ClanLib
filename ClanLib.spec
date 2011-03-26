@@ -1,6 +1,13 @@
 #
 # TODO: plenty of undefined references
 #
+# Conditional build:
+%bcond_with	sse2	# use SSE2 instructions
+#
+%ifarch pentium4 %{x8664}
+%define	with_sse2	1
+%endif
+#
 %define	cvmajor	2.2
 Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
@@ -24,7 +31,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
-BuildRequires:	libpng-devel >= 1.%{cvmajor}
+BuildRequires:	libpng-devel >= 1.2
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
 BuildRequires:	libvorbis-devel >= 1:1.0
@@ -35,6 +42,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
+%{?with_sse2:Requires:	cpuinfo(sse2)}
 Obsoletes:	ClanLib-SDL
 Obsoletes:	ClanLib-TTF
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -96,17 +104,6 @@ This package contains static versions of ClanLib libraries.
 
 %description static -l pl.UTF-8
 Ten pakiet zawiera statyczne wersje bibliotek ClanLib.
-
-%package doc
-Summary:	ClanLib reference documentation for programmers
-Summary(pl.UTF-8):	Dokumentacja programisty do biblioteki ClanLib
-Group:		Documentation
-
-%description doc
-ClanLib reference documentation for programmers.
-
-%description doc -l pl.UTF-8
-Dokumentacja programisty do biblioteki ClanLib
 
 %package OpenGL
 Summary:	OpenGL ClanLib library
@@ -226,6 +223,46 @@ Static MikMod ClanLib library.
 %description MikMod-static -l pl.UTF-8
 Statyczna biblioteka MikMod dla ClanLiba.
 
+%package SWRender
+Summary:	ClanLib SWRender (Software Rendering) library
+Summary(pl.UTF-8):	Biblioteka ClanLib SWRender (Software Rendering)
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description SWRender
+ClanLib SWRender software rendering library, utilizing SSE2
+instructions of x86 processors.
+
+%description SWRender -l pl.UTF-8
+Biblioteka programowego renderowania ClanLib SWRender, wykorzystująca
+instrukcje SSE2 procesorów x86.
+
+%package SWRender-devel
+Summary:	Header files for ClanLib SWRender library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki ClanLib SWRender
+Group:		Development/Libraries
+Requires:	%{name}-SWRender = %{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description SWRender-devel
+Header files for ClanLib SWRender software rendering library.
+
+%description SWRender-devel -l pl.UTF_8
+Pliki nagłówkowe biblioteki programowego renderowania ClanLib
+SWRender.
+
+%package SWRender-static
+Summary:	Static ClanLib SWRender library
+Summary(pl.UTF-8):	Statyczna biblioteka ClanLib SWRender
+Group:		Development/Libraries
+Requires:	%{name}-SWRender-devel = %{version}-%{release}
+
+%description SWRender-static
+Static ClanLib SWRender library.
+
+%description SWRender-static -l pl.UTF-8
+Statyczna biblioteka ClanLib SWRender.
+
 %package Vorbis
 Summary:	Vorbis ClanLib library
 Summary(pl.UTF-8):	Biblioteka Vorbis dla ClanLiba
@@ -264,25 +301,32 @@ Static Vorbis ClanLib library.
 %description Vorbis-static -l pl.UTF-8
 Statyczna biblioteka Vorbis dla ClanLiba.
 
+%package doc
+Summary:	ClanLib reference documentation for programmers
+Summary(pl.UTF-8):	Dokumentacja programisty do biblioteki ClanLib
+Group:		Documentation
+
+%description doc
+ClanLib reference documentation for programmers.
+
+%description doc -l pl.UTF-8
+Dokumentacja programisty do biblioteki ClanLib
+
 %prep
 %setup -q
 %patch0 -p1
 
-rm -rf autom4te.cache
-echo "dnl" >> acinclude.m4
+%{__rm} -r autom4te.cache
 
 %build
-# note: rtti is needed --- ClanLib uses exceptions!
 %{__libtoolize}
 %{__aclocal}
 %{__automake}
 %{__autoconf}
 %configure \
-	--enable-static \
-	--enable-shared \
+	%{!?with_sse2:--disable-sse2} \
 	--enable-docs \
 	--%{?debug:en}%{!?debug:dis}able-debug
-# directfb disabled now
 
 export PKG_CONFIG_PATH=$(pwd)/Setup/pkgconfig
 %{__make}
@@ -316,6 +360,9 @@ rm -rf $RPM_BUILD_ROOT
 %post	MikMod -p /sbin/ldconfig
 %postun	MikMod -p /sbin/ldconfig
 
+%post	SWRender -p /sbin/ldconfig
+%postun	SWRender -p /sbin/ldconfig
+
 %post	Vorbis -p /sbin/ldconfig
 %postun	Vorbis -p /sbin/ldconfig
 
@@ -338,8 +385,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libclan22Network-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22RegExp-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22RegExp-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22SWRender-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22SWRender-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Sound-%{cvmajor}.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libclan22Sound-%{cvmajor}.so.1
 %attr(755,root,root) %{_libdir}/libclan22Sqlite-%{cvmajor}.so.*.*.*
@@ -355,7 +400,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libclan22GUI.so
 %attr(755,root,root) %{_libdir}/libclan22Network.so
 %attr(755,root,root) %{_libdir}/libclan22RegExp.so
-%attr(755,root,root) %{_libdir}/libclan22SWRender.so
 %attr(755,root,root) %{_libdir}/libclan22Sound.so
 %attr(755,root,root) %{_libdir}/libclan22Sqlite.so
 %{_libdir}/libclan22App.la
@@ -366,7 +410,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libclan22GUI.la
 %{_libdir}/libclan22Network.la
 %{_libdir}/libclan22RegExp.la
-%{_libdir}/libclan22SWRender.la
 %{_libdir}/libclan22Sound.la
 %{_libdir}/libclan22Sqlite.la
 %dir %{_includedir}/ClanLib-%{cvmajor}
@@ -387,13 +430,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/network.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/RegExp
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/regexp.h
-%{_includedir}/ClanLib-%{cvmajor}/ClanLib/SWRender
-%{_includedir}/ClanLib-%{cvmajor}/ClanLib/swrender.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sound
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/sound.h
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Sqlite
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/sqlite.h
-%{_aclocaldir}/*.m4
+%{_aclocaldir}/clanlib.m4
 %{_pkgconfigdir}/clanApp-%{cvmajor}.pc
 %{_pkgconfigdir}/clanCSSLayout-%{cvmajor}.pc
 %{_pkgconfigdir}/clanCore-%{cvmajor}.pc
@@ -402,13 +443,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/clanGUI*-%{cvmajor}.pc
 %{_pkgconfigdir}/clanNetwork-%{cvmajor}.pc
 %{_pkgconfigdir}/clanRegExp-%{cvmajor}.pc
-%{_pkgconfigdir}/clanSWRender-%{cvmajor}.pc
 %{_pkgconfigdir}/clanSound-%{cvmajor}.pc
 %{_pkgconfigdir}/clanSqlite-%{cvmajor}.pc
-
-%files doc
-%defattr(644,root,root,755)
-%{_docdir}/clanlib-*
 
 %files static
 %defattr(644,root,root,755)
@@ -420,7 +456,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libclan22GUI.a
 %{_libdir}/libclan22Network.a
 %{_libdir}/libclan22RegExp.a
-%{_libdir}/libclan22SWRender.a
 %{_libdir}/libclan22Sound.a
 %{_libdir}/libclan22Sqlite.a
 
@@ -475,6 +510,25 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libclan22MikMod.a
 
+%if %{with sse2}
+%files SWRender
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclan22SWRender-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan22SWRender-%{cvmajor}.so.1
+
+%files SWRender-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libclan22SWRender.so
+%{_libdir}/libclan22SWRender.la
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/SWRender
+%{_includedir}/ClanLib-%{cvmajor}/ClanLib/swrender.h
+%{_pkgconfigdir}/clanSWRender-%{cvmajor}.pc
+
+%files SWRender-static
+%defattr(644,root,root,755)
+%{_libdir}/libclan22SWRender.a
+%endif
+
 %files Vorbis
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclan22Vorbis-%{cvmajor}.so.*.*.*
@@ -491,3 +545,7 @@ rm -rf $RPM_BUILD_ROOT
 %files Vorbis-static
 %defattr(644,root,root,755)
 %{_libdir}/libclan22Vorbis.a
+
+%files doc
+%defattr(644,root,root,755)
+%{_docdir}/clanlib-%{cvmajor}
