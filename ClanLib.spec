@@ -1,6 +1,4 @@
 #
-# TODO: plenty of undefined references
-#
 # Conditional build:
 %bcond_with	sse2	# use SSE2 instructions
 #
@@ -14,7 +12,7 @@ Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
 Version:	2.2.7
-Release:	0.1
+Release:	1
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html

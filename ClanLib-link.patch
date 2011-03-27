@@ -171,6 +171,20 @@
  libclan22Display_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanDisplay)
+--- ClanLib-2.2.7/Sources/SWRender/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
++++ ClanLib-2.2.7/Sources/SWRender/Makefile.am	2011-03-27 07:33:24.821729730 +0200
+@@ -69,9 +69,10 @@
+ Canvas/Commands/pixel_command_triangle.cpp \
+ swr_target.cpp
+ 
++libclan22SWRender_la_LIBADD = $(top_builddir)/Sources/Display/libclan22Display.la $(top_builddir)/Sources/Core/libclan22Core.la
+ libclan22SWRender_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+-  $(extra_LIBS_SWRender)
++  $(extra_LIBS_clanSWRender)
+ 
+ libclan22Sound_la_CXXFLAGS=$(SWRender_CXXFLAGS) $(extra_CFLAGS_SWRender)
+ 
 --- ClanLib-2.2.7/configure.ac.orig	2011-01-27 09:46:22.000000000 +0100
 +++ ClanLib-2.2.7/configure.ac	2011-03-26 15:25:57.540910453 +0100
 @@ -631,9 +631,14 @@
