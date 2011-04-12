@@ -329,10 +329,10 @@ Dokumentacja programisty do biblioteki ClanLib
 	--%{?debug:en}%{!?debug:dis}able-debug
 
 export PKG_CONFIG_PATH=$(pwd)/Setup/pkgconfig
-%{__make}
+%{__make} -j1
 
 (cd Documentation/Utilities/ReferenceDocs; ln -s ../../../Sources/API ClanLib)
-%{__make} html \
+%{__make} -j1 html \
 	PKG_CONFIG_PATH=$(pwd)/Setup/pkgconfig
 
 %install
