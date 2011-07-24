@@ -11,13 +11,13 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
-Version:	2.2.8
-Release:	3
+Version:	2.2.10
+Release:	1
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
 Source0:	http://www.clanlib.org/download/releases-2.0/%{name}-%{version}.tgz
-# Source0-md5:	b4184ea1535bbda52c2eea7523f332e4
+# Source0-md5:	61b7200ba8b895fc480850f4721dbc14
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.clanlib.org/
