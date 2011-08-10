@@ -320,7 +320,7 @@ Dokumentacja programisty do biblioteki ClanLib
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__automake}
 %{__autoconf}
 %configure \
