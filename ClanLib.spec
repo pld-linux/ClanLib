@@ -369,49 +369,49 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc COPYING CREDITS README
-%attr(755,root,root) %{_libdir}/libclan22App-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22App-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Core-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22CSSLayout-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22CSSLayout-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Core-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Database-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Database-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Display-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Display-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22GUI-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22GUI-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Network-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Network-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22RegExp-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22RegExp-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Sound-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Sound-%{cvmajor}.so.1
-%attr(755,root,root) %{_libdir}/libclan22Sqlite-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Sqlite-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23App-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23App-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Core-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23CSSLayout-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23CSSLayout-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Core-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Database-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Database-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Display-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Display-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23GUI-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23GUI-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Network-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Network-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23RegExp-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23RegExp-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Sound-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Sound-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Sqlite-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Sqlite-%{cvmajor}.so.1
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22App.so
-%attr(755,root,root) %{_libdir}/libclan22CSSLayout.so
-%attr(755,root,root) %{_libdir}/libclan22Core.so
-%attr(755,root,root) %{_libdir}/libclan22Database.so
-%attr(755,root,root) %{_libdir}/libclan22Display.so
-%attr(755,root,root) %{_libdir}/libclan22GUI.so
-%attr(755,root,root) %{_libdir}/libclan22Network.so
-%attr(755,root,root) %{_libdir}/libclan22RegExp.so
-%attr(755,root,root) %{_libdir}/libclan22Sound.so
-%attr(755,root,root) %{_libdir}/libclan22Sqlite.so
-%{_libdir}/libclan22App.la
-%{_libdir}/libclan22CSSLayout.la
-%{_libdir}/libclan22Core.la
-%{_libdir}/libclan22Database.la
-%{_libdir}/libclan22Display.la
-%{_libdir}/libclan22GUI.la
-%{_libdir}/libclan22Network.la
-%{_libdir}/libclan22RegExp.la
-%{_libdir}/libclan22Sound.la
-%{_libdir}/libclan22Sqlite.la
+%attr(755,root,root) %{_libdir}/libclan23App.so
+%attr(755,root,root) %{_libdir}/libclan23CSSLayout.so
+%attr(755,root,root) %{_libdir}/libclan23Core.so
+%attr(755,root,root) %{_libdir}/libclan23Database.so
+%attr(755,root,root) %{_libdir}/libclan23Display.so
+%attr(755,root,root) %{_libdir}/libclan23GUI.so
+%attr(755,root,root) %{_libdir}/libclan23Network.so
+%attr(755,root,root) %{_libdir}/libclan23RegExp.so
+%attr(755,root,root) %{_libdir}/libclan23Sound.so
+%attr(755,root,root) %{_libdir}/libclan23Sqlite.so
+%{_libdir}/libclan23App.la
+%{_libdir}/libclan23CSSLayout.la
+%{_libdir}/libclan23Core.la
+%{_libdir}/libclan23Database.la
+%{_libdir}/libclan23Display.la
+%{_libdir}/libclan23GUI.la
+%{_libdir}/libclan23Network.la
+%{_libdir}/libclan23RegExp.la
+%{_libdir}/libclan23Sound.la
+%{_libdir}/libclan23Sqlite.la
 %dir %{_includedir}/ClanLib-%{cvmajor}
 %dir %{_includedir}/ClanLib-%{cvmajor}/ClanLib
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/App
@@ -448,103 +448,103 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22App.a
-%{_libdir}/libclan22CSSLayout.a
-%{_libdir}/libclan22Core.a
-%{_libdir}/libclan22Database.a
-%{_libdir}/libclan22Display.a
-%{_libdir}/libclan22GUI.a
-%{_libdir}/libclan22Network.a
-%{_libdir}/libclan22RegExp.a
-%{_libdir}/libclan22Sound.a
-%{_libdir}/libclan22Sqlite.a
+%{_libdir}/libclan23App.a
+%{_libdir}/libclan23CSSLayout.a
+%{_libdir}/libclan23Core.a
+%{_libdir}/libclan23Database.a
+%{_libdir}/libclan23Display.a
+%{_libdir}/libclan23GUI.a
+%{_libdir}/libclan23Network.a
+%{_libdir}/libclan23RegExp.a
+%{_libdir}/libclan23Sound.a
+%{_libdir}/libclan23Sqlite.a
 
 %files OpenGL
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22GL-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22GL-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23GL-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23GL-%{cvmajor}.so.1
 
 %files OpenGL-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22GL.so
-%{_libdir}/libclan22GL.la
+%attr(755,root,root) %{_libdir}/libclan23GL.so
+%{_libdir}/libclan23GL.la
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/GL
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/gl.h
 %{_pkgconfigdir}/clanGL-%{cvmajor}.pc
 
 %files OpenGL-static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22GL.a
+%{_libdir}/libclan23GL.a
 
 %files OpenGL1
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22GL1-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22GL1-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23GL1-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23GL1-%{cvmajor}.so.1
 
 %files OpenGL1-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22GL1.so
-%{_libdir}/libclan22GL1.la
+%attr(755,root,root) %{_libdir}/libclan23GL1.so
+%{_libdir}/libclan23GL1.la
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/GL1
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/gl1.h
 %{_pkgconfigdir}/clanGL1-%{cvmajor}.pc
 
 %files OpenGL1-static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22GL1.a
+%{_libdir}/libclan23GL1.a
 
 %files MikMod
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22MikMod-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22MikMod-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23MikMod-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23MikMod-%{cvmajor}.so.1
 
 %files MikMod-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22MikMod.so
-%{_libdir}/libclan22MikMod.la
+%attr(755,root,root) %{_libdir}/libclan23MikMod.so
+%{_libdir}/libclan23MikMod.la
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/MikMod
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/mikmod.h
 %{_pkgconfigdir}/clanMikMod-%{cvmajor}.pc
 
 %files MikMod-static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22MikMod.a
+%{_libdir}/libclan23MikMod.a
 
 %if %{with sse2}
 %files SWRender
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22SWRender-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22SWRender-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23SWRender-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23SWRender-%{cvmajor}.so.1
 
 %files SWRender-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22SWRender.so
-%{_libdir}/libclan22SWRender.la
+%attr(755,root,root) %{_libdir}/libclan23SWRender.so
+%{_libdir}/libclan23SWRender.la
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/SWRender
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/swrender.h
 %{_pkgconfigdir}/clanSWRender-%{cvmajor}.pc
 
 %files SWRender-static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22SWRender.a
+%{_libdir}/libclan23SWRender.a
 %endif
 
 %files Vorbis
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22Vorbis-%{cvmajor}.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libclan22Vorbis-%{cvmajor}.so.1
+%attr(755,root,root) %{_libdir}/libclan23Vorbis-%{cvmajor}.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libclan23Vorbis-%{cvmajor}.so.1
 
 %files Vorbis-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libclan22Vorbis.so
-%{_libdir}/libclan22Vorbis.la
+%attr(755,root,root) %{_libdir}/libclan23Vorbis.so
+%{_libdir}/libclan23Vorbis.la
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/Vorbis
 %{_includedir}/ClanLib-%{cvmajor}/ClanLib/vorbis.h
 %{_pkgconfigdir}/clanVorbis-%{cvmajor}.pc
 
 %files Vorbis-static
 %defattr(644,root,root,755)
-%{_libdir}/libclan22Vorbis.a
+%{_libdir}/libclan23Vorbis.a
 
 %files doc
 %defattr(644,root,root,755)
