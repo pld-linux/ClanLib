@@ -27,7 +27,7 @@ BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake >= 1.6
 BuildRequires:	doxygen
 BuildRequires:	fontconfig-devel
-BuildRequires:	freetype-devel
+BuildRequires:	freetype-devel >= 2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmikmod-devel
 BuildRequires:	libpng-devel >= 1.2
@@ -41,6 +41,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
 BuildRequires:	xorg-lib-libXi-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
+BuildRequires:	zlib-devel
 %{?with_sse2:Requires:	cpuinfo(sse2)}
 Obsoletes:	ClanLib-SDL
 Obsoletes:	ClanLib-TTF
