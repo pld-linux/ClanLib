@@ -247,7 +247,7 @@ Requires:	%{name}-devel = %{version}-%{release}
 %description SWRender-devel
 Header files for ClanLib SWRender software rendering library.
 
-%description SWRender-devel -l pl.UTF_8
+%description SWRender-devel -l pl.UTF-8
 Pliki nagłówkowe biblioteki programowego renderowania ClanLib
 SWRender.
 
