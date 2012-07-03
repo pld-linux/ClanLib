@@ -232,10 +232,20 @@ Requires:	%{name} = %{version}-%{release}
 %description SWRender
 ClanLib SWRender software rendering library, utilizing SSE2
 instructions of x86 processors.
+%if %{without sse2}
+
+Note: this package is only stub; ClanLib needs to be recompiled with
+SSE2 instructions for it to work.
+%endif
 
 %description SWRender -l pl.UTF-8
 Biblioteka programowego renderowania ClanLib SWRender, wykorzystująca
 instrukcje SSE2 procesorów x86.
+%if %{without sse2}
+
+Uwaga: ten pakiet zawiera tylko zaślepki; żeby działał, trzeba
+przekompilować ClanLiba z użyciem instrukcji SSE2.
+%endif
 
 %package SWRender-devel
 Summary:	Header files for ClanLib SWRender library
@@ -511,7 +521,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libclan23MikMod.a
 
-%if %{with sse2}
 %files SWRender
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libclan23SWRender-%{cvmajor}.so.*.*.*
@@ -528,7 +537,6 @@ rm -rf $RPM_BUILD_ROOT
 %files SWRender-static
 %defattr(644,root,root,755)
 %{_libdir}/libclan23SWRender.a
-%endif
 
 %files Vorbis
 %defattr(644,root,root,755)
