@@ -246,6 +246,16 @@
  }
 --- ClanLib-3.0.0/Sources/Display/Image/pixel_filter_rgb_to_ycrcb.h~	2013-09-24 13:53:31.000000000 +0200
 +++ ClanLib-3.0.0/Sources/Display/Image/pixel_filter_rgb_to_ycrcb.h	2013-11-05 21:01:44.896313454 +0100
+@@ -30,7 +30,9 @@
+ #pragma once
+ 
+ #include "pixel_converter_impl.h"
++#ifndef DISABLE_SSE2
+ #include <emmintrin.h>
++#endif
+ 
+ namespace clan
+ {
 @@ -67,6 +67,7 @@
  };
  
@@ -261,3 +271,31 @@
 +#endif
  
  }
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_buffer_impl.cpp~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_buffer_impl.cpp	2013-11-05 21:22:05.346632850 +0100
+@@ -36,7 +36,9 @@
+ #include "API/Display/TargetProviders/graphic_context_provider.h"
+ #include "API/Display/TargetProviders/pixel_buffer_provider.h"
+ #include "API/Display/Image/pixel_converter.h"
++#ifndef DISABLE_SSE2
+ #include <emmintrin.h>
++#endif
+ 
+ #ifndef WIN32
+ #include <cstdlib>
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_writer_sse.h~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_writer_sse.h	2013-11-05 21:23:32.719965551 +0100
+@@ -31,11 +31,13 @@
+ 
+ #include "pixel_converter_impl.h"
+ 
++#ifndef DISABLE_SSE2
+ #if defined(__SSE4_1__)
+ #include <smmintrin.h>
+ #else
+ #include <emmintrin.h>
+ #endif
++#endif
+ 
+ 
+ namespace clan
