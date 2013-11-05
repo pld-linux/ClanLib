@@ -9,14 +9,3 @@
 
  #EXAMPLE_BIN contains list of example binaries to build
 
---- ClanLib-2.1.0/Documentation/Reference/Makefile.am~	2009-03-27 10:25:47.000000000 +0000
-+++ ClanLib-2.1.0/Documentation/Reference/Makefile.am	2009-10-21 12:04:46.000000000 +0000
-@@ -11,7 +11,7 @@
- 	mkdir reftest
- 	doxygen ./clanlib.doxygen
- 	make -C ../Utilities/ReferenceDocs
--	../Utilities/ReferenceDocs/ReferenceDocs
-+	LD_LIBRARY_PATH=../../Sources/Core/.libs/ ../Utilities/ReferenceDocs/ReferenceDocs
- 
- install-html:
- 	$(INSTALL) -d $(DESTDIR)$(HTML_PREFIX)
