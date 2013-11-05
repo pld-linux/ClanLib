@@ -1,9 +1,9 @@
 #
 # Conditional build:
-%bcond_with	sse2	# use SSE2 instructions
+%bcond_without	sse2	# use SSE2 instructions
 #
-%ifarch pentium4 %{x8664}
-%define	with_sse2	1
+%ifnarch pentium4 %{x8664}
+%undefine	with_sse2
 %endif
 #
 %define	cvmajor	3.0
@@ -228,7 +228,7 @@ Dokumentacja programisty do biblioteki ClanLib
 %{__automake}
 %{__autoconf}
 %configure \
-	%{!?with_sse2:--disable-sse2} \
+	%{__enable_disable sse2} \
 	--enable-docs \
 	--%{?debug:en}%{!?debug:dis}able-debug
 
