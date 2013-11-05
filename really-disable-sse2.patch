@@ -299,11 +299,32 @@
  
  
  namespace clan
+--- ClanLib-3.0.0/Sources/API/Display/display_target.h.orig	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/API/Display/display_target.h	2013-11-05 22:46:46.000000000 +0100
+@@ -80,11 +80,12 @@
+ /// \name Implementation
+ /// \{
+ 
+-private:
+-
++public:
+ 	/// \brief Constructs a null DisplayTarget
+ 	DisplayTarget();
+ 
++private:
++
+ 	/// \brief Constructs a DisplayTarget
+ 	///
+ 	/// \param DisplayTarget_Impl = Weak Ptr
 --- ClanLib-3.0.0/Sources/SWRender/X11/Stub/setup_swrender.cpp~	2013-09-24 13:53:31.000000000 +0200
 +++ ClanLib-3.0.0/Sources/SWRender/X11/Stub/setup_swrender.cpp	2013-11-05 21:47:15.449955252 +0100
-@@ -34,22 +34,22 @@
+@@ -33,23 +33,23 @@
+ 
  // NON-SSE2 STUB
  
++namespace clan
++{
++
  /////////////////////////////////////////////////////////////////////////////
 -// CL_SetupSWRender Construction:
 +// SetupSWRender Construction:
@@ -327,15 +348,18 @@
  }
  
 -void CL_SetupSWRender::set_current()
-+void SetupSWRender::set_current()
- {
+-{
  }
- 
+-
 --- ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_graphic_context.cpp~	2013-09-24 13:53:31.000000000 +0200
 +++ ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_graphic_context.cpp	2013-11-05 21:47:35.776621770 +0100
-@@ -33,57 +33,57 @@
+@@ -32,58 +32,61 @@
+ 
  // NON-SSE2 stub
  
++namespace clan
++{
++
  /////////////////////////////////////////////////////////////////////////////
 -// CL_GraphicContext_SWRender_Impl Class:
 +// GraphicContext_SWRender_Impl Class:
@@ -399,19 +423,24 @@
  }
  
 -void CL_GraphicContext_SWRender::queue_command(CL_UniquePtr<CL_PixelCommand> &command)
-+void GraphicContext_SWRender::queue_command(UniquePtr<PixelCommand> &command)
++void GraphicContext_SWRender::queue_command(std::unique_ptr<PixelCommand> &command)
  {
  }
  
  /////////////////////////////////////////////////////////////////////////////
 -// CL_GraphicContext_SWRender Implementation:
+-
 +// GraphicContext_SWRender Implementation:
- 
++}
 --- ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_program_object.cpp~	2013-09-24 13:53:31.000000000 +0200
 +++ ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_program_object.cpp	2013-11-05 21:47:48.349955014 +0100
-@@ -33,41 +33,41 @@
+@@ -32,42 +32,45 @@
+ 
  // NON-SSE2 stub
  
++namespace clan
++{
++
  /////////////////////////////////////////////////////////////////////////////
 -// CL_ProgramObject_SWRender Construction:
 +// ProgramObject_SWRender Construction:
@@ -459,13 +488,18 @@
  
  /////////////////////////////////////////////////////////////////////////////
 -// CL_ProgramObject_SWRender Implementation:
+-
 +// ProgramObject_SWRender Implementation:
- 
++}
 --- ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_target.cpp~	2013-09-24 13:53:31.000000000 +0200
 +++ ClanLib-3.0.0/Sources/SWRender/X11/Stub/swr_target.cpp	2013-11-05 21:47:58.379954940 +0100
-@@ -32,21 +32,21 @@
+@@ -31,22 +31,33 @@
+ 
  // NON-SSE2 stub
  
++namespace clan
++{
++
  /////////////////////////////////////////////////////////////////////////////
 -// CL_SWRenderTarget Construction:
 +// SWRenderTarget Construction:
@@ -483,11 +517,19 @@
  /////////////////////////////////////////////////////////////////////////////
 -// CL_SWRenderTarget Attributes:
 +// SWRenderTarget Attributes:
++bool SWRenderTarget::is_current()
++{
++	return false;
++}
  
  /////////////////////////////////////////////////////////////////////////////
 -// CL_SWRenderTarget Operations:
 +// SWRenderTarget Operations:
++void SWRenderTarget::set_current()
++{
++}
  
  /////////////////////////////////////////////////////////////////////////////
 -// CL_SWRenderTarget Implementation:
 +// SWRenderTarget Implementation:
++}
