@@ -1,13 +1,13 @@
 --- ClanLib-2.2.7/Sources/Core/Makefile.am.orig	2010-07-19 09:10:06.000000000 +0200
 +++ ClanLib-2.2.7/Sources/Core/Makefile.am	2011-03-26 14:43:21.808912129 +0100
 @@ -164,7 +164,7 @@
+ 
  endif
  
- # FIXME: Hardcoding these here might not be a good idea
--libclan23Core_la_LIBADD = @LIBPTHREAD@
-+libclan23Core_la_LIBADD = @LIBPTHREAD@ -lpthread
+-libclan30Core_la_LIBADD = @LIBPTHREAD@
++libclan30Core_la_LIBADD = @LIBPTHREAD@ -lpthread
  
- libclan23Core_la_LDFLAGS = \
+ libclan30Core_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
 --- ClanLib-2.2.7/Sources/Network/Makefile.am.orig	2011-01-27 09:46:22.000000000 +0100
 +++ ClanLib-2.2.7/Sources/Network/Makefile.am	2011-03-26 14:55:17.676908777 +0100
@@ -15,13 +15,13 @@
  setupnetwork_unix.cpp
  endif
  
-+libclan23Network_la_LIBADD = $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23Network_la_LDFLAGS = \
++libclan30Network_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30Network_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
 -  $(extra_LIBS_Network)
 +  $(extra_LIBS_clanNetwork)
  
- libclan23Sound_la_CXXFLAGS=$(Network_CXXFLAGS) $(extra_CFLAGS_Network)
+ libclan30Sound_la_CXXFLAGS=$(Network_CXXFLAGS) $(extra_CFLAGS_Network)
  
 --- ClanLib-2.2.7/Sources/Sound/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
 +++ ClanLib-2.2.7/Sources/Sound/Makefile.am	2011-03-26 14:45:51.348911291 +0100
@@ -29,8 +29,8 @@
  SoundProviders/Unix/soundprovider_recorder_oss.h
  endif
  
-+libclan23Sound_la_LIBADD = $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23Sound_la_LDFLAGS = \
++libclan30Sound_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30Sound_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanSound)
 --- ClanLib-2.2.7/Sources/CSSLayout/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
@@ -39,94 +39,38 @@
  	precomp.cpp \
  	precomp.h
  
-+libclan23CSSLayout_la_LIBADD = $(top_builddir)/Sources/Display/libclan23Display.la $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23CSSLayout_la_LDFLAGS = \
++libclan30CSSLayout_la_LIBADD = $(top_builddir)/Sources/Display/libclan30Display.la $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30CSSLayout_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanCSSLayout)
---- ClanLib-2.2.7/Sources/RegExp/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
-+++ ClanLib-2.2.7/Sources/RegExp/Makefile.am	2011-03-26 14:49:19.388910453 +0100
-@@ -5,9 +5,10 @@
- regexp.cpp \
- regexp_match.cpp
- 
-+libclan23RegExp_la_LIBADD = $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23RegExp_la_LDFLAGS = \
-   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
--  $(extra_LIBS_RegExp)
-+  $(extra_LIBS_clanRegExp)
- 
- libclan23Sound_la_CXXFLAGS=$(RegExp_CXXFLAGS) $(extra_CFLAGS_RegExp)
- 
---- ClanLib-2.2.7/Sources/MikMod/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
-+++ ClanLib-2.2.7/Sources/MikMod/Makefile.am	2011-03-26 14:51:37.044906262 +0100
-@@ -8,11 +8,11 @@
-  soundprovider_mikmod.cpp   \
-  soundprovider_mikmod_session.cpp
- 
--libclan23MikMod_la_LIBADD = -lmikmod
-+libclan23MikMod_la_LIBADD = $(top_builddir)/Sources/Sound/libclan23Sound.la $(top_builddir)/Sources/Core/libclan23Core.la -lmikmod
- 
- libclan23MikMod_la_LDFLAGS = \
-   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
--  $(extra_LIBS_MikMod)
-+  $(extra_LIBS_clanMikMod)
- 
- libclan23Sound_la_CXXFLAGS=$(MikMod_CXXFLAGS) $(extra_CFLAGS_MikMod)
- 
---- ClanLib-2.2.7/Sources/GL1/Makefile.am.orig	2011-01-27 09:46:22.000000000 +0100
-+++ ClanLib-2.2.7/Sources/GL1/Makefile.am	2011-03-26 14:55:25.660907939 +0100
-@@ -41,6 +41,7 @@
- 	GLX/gl1_window_provider_glx.cpp \
- 	GLX/gl1_window_provider_glx.h
- endif
-+libclan23GL1_la_LIBADD = $(top_builddir)/Sources/Display/libclan23Display.la $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23GL1_la_LDFLAGS = \
-   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
-   $(extra_LIBS_clanGL1)
 --- ClanLib-2.2.7/Sources/GL/Makefile.am.orig	2011-01-27 09:46:22.000000000 +0100
 +++ ClanLib-2.2.7/Sources/GL/Makefile.am	2011-03-26 14:57:45.268909615 +0100
 @@ -48,6 +48,7 @@
  	GLX/opengl_window_provider_glx.cpp \
  	GLX/opengl_window_provider_glx.h
  endif
-+libclan23GL_la_LIBADD = $(top_builddir)/Sources/Display/libclan23Display.la $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23GL_la_LDFLAGS = \
++libclan30GL_la_LIBADD = $(top_builddir)/Sources/Display/libclan30Display.la $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30GL_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanGL)
---- ClanLib-2.2.7/Sources/Vorbis/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
-+++ ClanLib-2.2.7/Sources/Vorbis/Makefile.am	2011-03-26 14:59:38.508911291 +0100
-@@ -5,11 +5,11 @@
- 	soundprovider_vorbis.cpp \
- 	soundprovider_vorbis_session.cpp
- 
--libclan23Vorbis_la_LIBADD = -logg -lvorbis
-+libclan23Vorbis_la_LIBADD = $(top_builddir)/Sources/Sound/libclan23Sound.la $(top_builddir)/Sources/Core/libclan23Core.la -logg -lvorbis
- 
- libclan23Vorbis_la_LDFLAGS = \
-   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
--  $(extra_LIBS_Vorbis)
-+  $(extra_LIBS_clanVorbis)
- 
- libclan23Sound_la_CXXFLAGS=$(Vorbis_CXXFLAGS) $(extra_CFLAGS_Vorbis)
- 
 --- ClanLib-2.2.7/Sources/Database/Makefile.am.orig	2010-11-01 09:26:08.000000000 +0100
 +++ ClanLib-2.2.7/Sources/Database/Makefile.am	2011-03-26 15:00:40.788912129 +0100
 @@ -8,6 +8,7 @@
  db_value.cpp \
  db_transaction.cpp
  
-+libclan23Database_la_LIBADD = $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23Database_la_LDFLAGS = \
++libclan30Database_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30Database_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanDatabase)
 --- ClanLib-2.2.7/Sources/App/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
 +++ ClanLib-2.2.7/Sources/App/Makefile.am	2011-03-26 15:01:37.480908777 +0100
 @@ -6,6 +6,7 @@
- libclan23App_la_SOURCES = Unix/clanapp.cpp
+ libclan30App_la_SOURCES = Unix/clanapp.cpp
  endif
  
-+libclan23App_la_LIBADD = $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23App_la_LDFLAGS = \
++libclan30App_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30App_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanApp)
 --- ClanLib-2.2.7/Sources/GUI/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
@@ -135,8 +79,8 @@
  gui_theme_default_impl.h \
  precomp.h
  
-+libclan23GUI_la_LIBADD = $(top_builddir)/Sources/CSSLayout/libclan23CSSLayout.la $(top_builddir)/Sources/Display/libclan23Display.la $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23GUI_la_LDFLAGS = \
++libclan30GUI_la_LIBADD = $(top_builddir)/Sources/CSSLayout/libclan30CSSLayout.la $(top_builddir)/Sources/Display/libclan30Display.la $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30GUI_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanGUI)
 --- ClanLib-2.2.7/Sources/Sqlite/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
@@ -145,31 +89,31 @@
  sqlite_reader_provider.cpp \
  sqlite_transaction_provider.cpp
  
-+libclan23Sqlite_la_LIBADD = $(top_builddir)/Sources/Database/libclan23Database.la $(top_builddir)/Sources/Core/libclan23Core.la -lpthread -lsqlite3
- libclan23Sqlite_la_LDFLAGS = \
++libclan30Sqlite_la_LIBADD = $(top_builddir)/Sources/Database/libclan30Database.la $(top_builddir)/Sources/Core/libclan30Core.la -lpthread -lsqlite3
+ libclan30Sqlite_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
 -  $(extra_LIBS_Sqlite)
 +  $(extra_LIBS_clanSqlite)
  
- libclan23Sound_la_CXXFLAGS=$(Sqlite_CXXFLAGS) $(extra_CFLAGS_Sqlite)
+ libclan30Sound_la_CXXFLAGS=$(Sqlite_CXXFLAGS) $(extra_CFLAGS_Sqlite)
  
 --- ClanLib-2.3.1/Sources/Display/Makefile.am.orig      2011-07-26 11:43:05.000000000 +0200
 +++ ClanLib-2.3.1/Sources/Display/Makefile.am   2011-08-10 09:48:40.939755410 +0200
 @@ -1,6 +1,7 @@
- lib_LTLIBRARIES = libclan23Display.la
+ lib_LTLIBRARIES = libclan30Display.la
 
  if WIN32
-+libclan23Display_la_LIBADD =
++libclan30Display_la_LIBADD =
  else
- libclan23Display_la_LIBADD = -lpng -ljpeg
+ libclan30Display_la_LIBADD = -lpng -ljpeg
  endif
 @@ -201,7 +202,7 @@
         X11/font_config.cpp \
         X11/font_config.h
  endif
 -
-+libclan23Display_la_LIBADD += $(top_builddir)/Sources/Core/libclan23Core.la $(clanDisplay_LIBS)
- libclan23Display_la_LDFLAGS = \
++libclan30Display_la_LIBADD += $(top_builddir)/Sources/Core/libclan30Core.la $(clanDisplay_LIBS)
+ libclan30Display_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanDisplay
 --- ClanLib-2.2.7/Sources/SWRender/Makefile.am.orig	2010-07-05 16:50:31.000000000 +0200
@@ -178,13 +122,13 @@
  Canvas/Commands/pixel_command_triangle.cpp \
  swr_target.cpp
  
-+libclan23SWRender_la_LIBADD = $(top_builddir)/Sources/Display/libclan23Display.la $(top_builddir)/Sources/Core/libclan23Core.la
- libclan23SWRender_la_LDFLAGS = \
++libclan30SWRender_la_LIBADD = $(top_builddir)/Sources/Display/libclan30Display.la $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30SWRender_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
 -  $(extra_LIBS_SWRender)
 +  $(extra_LIBS_clanSWRender)
  
- libclan23Sound_la_CXXFLAGS=$(SWRender_CXXFLAGS) $(extra_CFLAGS_SWRender)
+ libclan30Sound_la_CXXFLAGS=$(SWRender_CXXFLAGS) $(extra_CFLAGS_SWRender)
  
 --- ClanLib-2.2.7/configure.ac.orig	2011-01-27 09:46:22.000000000 +0100
 +++ ClanLib-2.2.7/configure.ac	2011-03-26 15:25:57.540910453 +0100
@@ -213,22 +157,82 @@
  
  if test "$enable_clanDisplay" = "yes"; then
  	CLANLIB_ENABLE_MODULES(Display)
-@@ -670,14 +674,14 @@
- 	CLANLIB_ENABLE_MODULES(GL1)
+@@ -681,14 +686,14 @@
+ if test "$enable_clanGL" = "yes"; then
+ 	CLANLIB_ENABLE_MODULES(GL)
  fi
- 
--if test "$enable_clanGUI" = "yes"; then
--	CLANLIB_ENABLE_MODULES(GUI)
--fi
--
- if test "$enable_clanCSSLayout" = "yes"; then
- 	CLANLIB_ENABLE_MODULES(CSSLayout)
- fi
- 
-+if test "$enable_clanGUI" = "yes"; then
-+	CLANLIB_ENABLE_MODULES(GUI)
++if test "$enable_clanCSSLayout" = "yes"; then
++	CLANLIB_ENABLE_MODULES(CSSLayout)
 +fi
-+
+ 
+ if test "$enable_clanGUI" = "yes"; then
+ 	CLANLIB_ENABLE_MODULES(GUI)
+ fi
+ 
+-if test "$enable_clanCSSLayout" = "yes"; then
+-	CLANLIB_ENABLE_MODULES(CSSLayout)
+-fi
  if test "$enable_clanSWRender" = "yes"; then
  	CLANLIB_ENABLE_MODULES(SWRender)
  fi
+--- ClanLib-3.0.0/Sources/Compute/Makefile.am.orig	2013-11-05 19:30:01.877180958 +0100
++++ ClanLib-3.0.0/Sources/Compute/Makefile.am	2013-11-05 19:30:17.203847516 +0100
+@@ -21,6 +21,7 @@
+ compute_program.cpp \
+ setup_compute.cpp
+ 
++libclan30Compute_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la $(top_builddir)/Sources/GL/libclan30GL.la
+ libclan30Compute_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+   $(extra_LIBS_Compute)
+--- ClanLib-3.0.0/Sources/Scene3D/Makefile.am.orig	2013-11-05 19:33:55.787179266 +0100
++++ ClanLib-3.0.0/Sources/Scene3D/Makefile.am	2013-11-05 19:34:39.483845615 +0100
+@@ -46,6 +46,7 @@
+ Performance/gpu_timer.cpp \
+ Performance/scope_timer.cpp
+ 
++libclan30Scene3D_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la $(top_builddir)/Sources/GL/libclan30GL.la
+ libclan30Scene3D_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+   $(extra_LIBS_clanScene3D)
+--- ClanLib-3.0.0/Sources/Physics3D/Makefile.am.orig	2013-11-05 19:35:36.817178534 +0100
++++ ClanLib-3.0.0/Sources/Physics3D/Makefile.am	2013-11-05 19:35:51.530511761 +0100
+@@ -137,6 +137,7 @@
+ physics3d_ray_test.cpp \
+ physics3d_contact_test.cpp
+ 
++libclan30Physics3D_la_LIBADD = $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30Physics3D_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+   $(extra_LIBS_clanPhysics3D)
+--- ClanLib-3.0.0/Sources/Physics2D/Makefile.am.orig	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Physics2D/Makefile.am	2013-11-05 19:37:26.527177740 +0100
+@@ -82,6 +82,7 @@
+ Collision/Shapes/circle_shape.cpp \
+ Collision/physics_object.cpp
+ 
++libclan30Physics2D_la_LIBADD = $(top_builddir)/Sources/Display/libclan30Display.la $(top_builddir)/Sources/Core/libclan30Core.la
+ libclan30Physics2D_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+   $(extra_LIBS_clanPhysics2D)
+--- ClanLib-3.0.0/Sources/GameIDE/Makefile.am.orig	2013-11-05 19:38:08.570510770 +0100
++++ ClanLib-3.0.0/Sources/GameIDE/Makefile.am	2013-11-05 19:39:03.023843708 +0100
+@@ -157,6 +157,7 @@
+ TextEditor/Scintilla/lexlib/LexerModule.cxx
+ endif
+ 
++libclan30GameIDE_la_LIBADD = $(top_builddir)/Sources/GUI/libclan30GUI.la
+ libclan30GameIDE_la_LDFLAGS = \
+   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
+   $(extra_LIBS_clanGameIDE)
+--- /home/users/baggins/devel/PLD/rpm/BUILD/ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp~	2013-09-24 13:53:31.000000000 +0200
++++ /home/users/baggins/devel/PLD/rpm/BUILD/ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp	2013-11-05 20:08:58.168398046 +0100
+@@ -35,7 +35,7 @@
+ 
+ namespace clan
+ {
+-
++extern cl_tls_variable GLFunctions *OpenGL::functions;
+ 
+ GBufferPass::GBufferPass(ResourceContainer &inout)
+ {
