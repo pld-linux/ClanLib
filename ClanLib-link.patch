@@ -225,8 +225,8 @@
  libclan30GameIDE_la_LDFLAGS = \
    -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
    $(extra_LIBS_clanGameIDE)
---- /home/users/baggins/devel/PLD/rpm/BUILD/ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp~	2013-09-24 13:53:31.000000000 +0200
-+++ /home/users/baggins/devel/PLD/rpm/BUILD/ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp	2013-11-05 20:08:58.168398046 +0100
+--- ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Scene3D/Passes/GBuffer/gbuffer_pass.cpp	2013-11-05 20:08:58.168398046 +0100
 @@ -35,7 +35,7 @@
  
  namespace clan
