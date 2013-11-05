@@ -25,3 +25,104 @@
  fi
  extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -pthread -std=c++0x"
  
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_converter.cpp~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_converter.cpp	2013-11-05 20:57:39.298376899 +0100
+@@ -36,12 +36,16 @@
+ #include "pixel_reader_half_float.h"
+ #include "pixel_reader_norm.h"
+ #include "pixel_reader_special.h"
++#ifndef DISABLE_SSE2
+ #include "pixel_reader_sse.h"
++#endif
+ #include "pixel_writer_cast.h"
+ #include "pixel_writer_half_float.h"
+ #include "pixel_writer_norm.h"
+ #include "pixel_writer_special.h"
++#ifndef DISABLE_SSE2
+ #include "pixel_writer_sse.h"
++#endif
+ #include "pixel_filter_gamma.h"
+ #include "pixel_filter_premultiply_alpha.h"
+ #include "pixel_filter_swizzle.h"
+@@ -126,8 +130,13 @@
+ 
+ void PixelConverter::convert(void *output, int output_pitch, TextureFormat output_format, const void *input, int input_pitch, TextureFormat input_format, int width, int height)
+ {
++#ifndef DISABLE_SSE2
+ 	bool sse2 = System::detect_cpu_extension(System::sse2);
+ 	bool sse4 = System::detect_cpu_extension(System::sse4_1);
++#else
++	bool sse2 = false;
++	bool sse4 = false;
++#endif
+ 
+ 	std::unique_ptr<PixelReader> reader = impl->create_reader(input_format, sse2);
+ 	std::unique_ptr<PixelWriter> writer = impl->create_writer(output_format, sse2, sse4);
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_filter_gamma.h~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_filter_gamma.h	2013-11-05 21:00:27.261709016 +0100
+@@ -50,6 +50,7 @@
+ 	float gamma;
+ };
+ 
++#ifndef DISABLE_SSE2
+ class PixelFilterGammaSSE2 : public PixelFilter
+ {
+ public:
+@@ -170,5 +171,6 @@
+ private:
+ 	float gamma;
+ };
++#endif
+ 
+ }
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_filter_premultiply_alpha.h~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_filter_premultiply_alpha.h	2013-11-05 21:01:03.885042084 +0100
+@@ -46,6 +46,7 @@
+ 	}
+ };
+ 
++#ifndef DISABLE_SSE2
+ class PixelFilterPremultiplyAlphaSSE2 : public PixelFilter
+ {
+ public:
+@@ -63,5 +64,6 @@
+ 		}
+ 	}
+ };
++#endif
+ 
+ }
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_filter_swizzle.h~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_filter_swizzle.h	2013-11-05 21:01:17.849463650 +0100
+@@ -76,6 +76,7 @@
+ 	Vec4f red, green, blue, alpha;
+ };
+ 
++#ifndef DISABLE_SSE2
+ class PixelFilterSwizzleSSE2 : public PixelFilter
+ {
+ public:
+@@ -126,5 +127,6 @@
+ private:
+ 	__m128 red_mask, green_mask, blue_mask, alpha_mask;
+ };
++#endif
+ 
+ }
+--- ClanLib-3.0.0/Sources/Display/Image/pixel_filter_rgb_to_ycrcb.h~	2013-09-24 13:53:31.000000000 +0200
++++ ClanLib-3.0.0/Sources/Display/Image/pixel_filter_rgb_to_ycrcb.h	2013-11-05 21:01:44.896313454 +0100
+@@ -67,6 +67,7 @@
+ };
+ 
+ 
++#ifndef DISABLE_SSE2
+ class PixelFilterSSE2_RGBToYCrCb : public PixelFilter
+ {
+ public:
+@@ -156,5 +157,6 @@
+ 		}
+ 	}
+ };
++#endif
+ 
+ }
