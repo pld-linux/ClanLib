@@ -20,6 +20,7 @@ Source0:	http://www.clanlib.org/download/releases-3.0/%{name}-%{version}.tgz
 # Source0-md5:	ebde34b9452a3b1d26cf81563f6ea62f
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-link.patch
+Patch2:		really-disable-sse2.patch
 URL:		http://www.clanlib.org/
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	alsa-lib-devel
@@ -217,6 +218,7 @@ Dokumentacja programisty do biblioteki ClanLib
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__rm} -r autom4te.cache
 

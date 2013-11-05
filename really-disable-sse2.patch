@@ -1,0 +1,27 @@
+--- ClanLib-3.0.0/configure.ac~	2013-11-05 19:52:09.000000000 +0100
++++ ClanLib-3.0.0/configure.ac	2013-11-05 20:42:25.891716845 +0100
+@@ -222,6 +222,7 @@
+ 		AC_MSG_RESULT([enabled])
+ 		use_sse2=yes
+ 	else
++		AC_DEFINE(DISABLE_SSE2)
+ 		AC_DEFINE(CL_DISABLE_SSE2)
+ 		AC_MSG_RESULT([disabled])
+ 	fi
+@@ -234,6 +235,7 @@
+ 		use_sse2=yes
+ 	else
+ 		AC_MSG_WARN( [ *** Compliler does not support SSE2 ])
++		AC_DEFINE(DISABLE_SSE2)
+ 		AC_DEFINE(CL_DISABLE_SSE2)
+ 		AC_MSG_RESULT([disabled])
+ 	fi
+@@ -248,7 +250,7 @@
+ 
+ 	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -msse2"
+ else
+-	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -DCL_DISABLE_SSE2"
++	extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -DCL_DISABLE_SSE2 -DDISABLE_SSE2"
+ fi
+ extra_CFLAGS_clanCore="$extra_CFLAGS_clanCore -pthread -std=c++0x"
+ 
