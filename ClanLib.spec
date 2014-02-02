@@ -11,13 +11,13 @@ Summary:	ClanLib, the platform independent game SDK
 Summary(pl.UTF-8):	ClanLib, niezależny od platformy SDK do gier
 Summary(pt_BR.UTF-8):	SDK Clanlib
 Name:		ClanLib
-Version:	3.0.0
+Version:	3.0.1
 Release:	1
 License:	BSD-like (see COPYING)
 Group:		Libraries
 #Source0Download: http://www.clanlib.org/download.html
 Source0:	http://www.clanlib.org/download/releases-3.0/%{name}-%{version}.tgz
-# Source0-md5:	ebde34b9452a3b1d26cf81563f6ea62f
+# Source0-md5:	29f2ce542019c6d5d8793cdf4811e4f9
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-link.patch
 Patch2:		really-disable-sse2.patch
@@ -29,18 +29,15 @@ BuildRequires:	automake >= 1.6
 BuildRequires:	doxygen
 BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2
-BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel >= 1.2
+BuildRequires:	graphviz
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:1.4d-3
-BuildRequires:	libxslt-progs
-BuildRequires:	pcre-devel
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
-BuildRequires:	xorg-lib-libXi-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXrender-devel
 BuildRequires:	xorg-lib-libXxf86vm-devel
-BuildRequires:	zlib-devel
 %{?with_sse2:Requires:	cpuinfo(sse2)}
 Obsoletes:	ClanLib-SDL
 Obsoletes:	ClanLib-Vorbis
@@ -76,8 +73,6 @@ Summary(pt_BR.UTF-8):	Arquivos para desenvolvimento usando a Clanlib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libstdc++-devel
-# for libclanDisplay
-Requires:	xorg-lib-libXxf86vm-devel
 Obsoletes:	ClanLib-SDL-devel
 Obsoletes:	ClanLib-Vorbis-devel
 Obsoletes:	ClanLib-TTF-devel
@@ -132,8 +127,6 @@ Group:		Development/Libraries
 Requires:	%{name}-OpenGL = %{version}-%{release}
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	OpenGL-GLU-devel
-Requires:	xorg-lib-libXi-devel
-Requires:	xorg-lib-libXxf86vm-devel
 
 %description OpenGL-devel
 Header files for OpenGL ClanLib library.
@@ -212,7 +205,7 @@ Group:		Documentation
 ClanLib reference documentation for programmers.
 
 %description doc -l pl.UTF-8
-Dokumentacja programisty do biblioteki ClanLib
+Dokumentacja programisty do biblioteki ClanLib.
 
 %prep
 %setup -q
